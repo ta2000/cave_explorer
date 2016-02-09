@@ -1,0 +1,61 @@
+# depslib dependency file v1.0
+1454997591 source:c:\users\toman_000\desktop\cave_explorer\main.cpp
+	"Game.h"
+	<GL/glut.h>
+	<stdlib.h>
+
+1066736514 c:\freeglut\include\gl\glut.h
+	"freeglut_std.h"
+
+1413563304 c:\freeglut\include\gl\freeglut_std.h
+	<windows.h>
+	<EGL/egl.h>
+	<GLES/gl.h>
+	<GLES2/gl2.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1454997374 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
+	"Game.h"
+	"Sprite.h"
+	"Player.h"
+	"Enemy.h"
+	<GL/glut.h>
+	<vector>
+
+1454997454 c:\users\toman_000\desktop\cave_explorer\game.h
+	<vector>
+	"Sprite.h"
+	"Player.h"
+
+1454908596 c:\users\toman_000\desktop\cave_explorer\game.cpp
+	"Game.h"
+	<GL/glut.h>
+	<stdlib.h>
+
+1454996128 source:c:\users\toman_000\desktop\cave_explorer\sprite.cpp
+	"Sprite.h"
+	"Game.h"
+	<GL/glut.h>
+
+1454995729 c:\users\toman_000\desktop\cave_explorer\sprite.h
+
+1454997014 c:\users\toman_000\desktop\cave_explorer\player.h
+	"Sprite.h"
+
+1454996707 source:c:\users\toman_000\desktop\cave_explorer\player.cpp
+	"Player.h"
+	"Game.h"
+	<GL/glut.h>
+
+1454997062 source:c:\users\toman_000\desktop\cave_explorer\enemy.cpp
+	"Enemy.h"
+	"Game.h"
+	<GL/glut.h>
+
+1454997016 c:\users\toman_000\desktop\cave_explorer\enemy.h
+	"Sprite.h"
+
