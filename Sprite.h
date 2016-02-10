@@ -8,9 +8,10 @@ public:
 
     float x,y,w,h;
 
+    void setX(float value);
+    void setY(float value);
     void draw();
 private:
-
 };
 
 #endif

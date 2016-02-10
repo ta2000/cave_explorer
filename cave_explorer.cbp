@@ -15,6 +15,9 @@
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add library="..\..\..\..\freeglut\lib\glut32.lib" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/cave_explorer" prefix_auto="1" extension_auto="1" />
@@ -31,6 +34,7 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++11" />
 			<Add option="-Wall" />
 			<Add directory="C:/freeglut/include" />
 		</Compiler>
@@ -42,6 +46,14 @@
 			<Add library="gdi32" />
 			<Add directory="C:/freeglut/lib" />
 		</Linker>
+		<Unit filename="Enemy.cpp" />
+		<Unit filename="Enemy.h" />
+		<Unit filename="Game.cpp" />
+		<Unit filename="Game.h" />
+		<Unit filename="Player.cpp" />
+		<Unit filename="Player.h" />
+		<Unit filename="Sprite.cpp" />
+		<Unit filename="Sprite.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

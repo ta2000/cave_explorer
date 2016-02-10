@@ -13,8 +13,10 @@ public:
     Player* player;
     std::vector<Sprite*> sprites;
 
+    void update();
     void draw();
-
+    void keyPress(unsigned char key);
+    void keyRelease(unsigned char key);
 private:
     void addEnemy(float, float);
 };

@@ -39,6 +39,8 @@ void update(int value)
 {
     glutPostRedisplay();
     glutTimerFunc(25, update, 0);
+
+    game.update();
 }
 
 void draw()
@@ -53,45 +55,11 @@ void draw()
 
 // Key handling
 void handleKeyPress(unsigned char key, int x, int y)
- {
-    switch(key) {
-        case 'w':
-
-            break;
-        case 'a':
-
-            break;
-        case 's':
-
-            break;
-        case 'd':
-
-            break;
-        case 27: // Escape
-            exit(0);
-            break;
-    }
-    glutPostRedisplay();
+{
+    game.keyPress(key);
 }
 
 void handleKeyRelease(unsigned char key, int x, int y)
 {
-   switch(key) {
-       case 'w':
-
-            break;
-       case 'a':
-
-            break;
-       case 's':
-
-           break;
-       case 'd':
-
-           break;
-       case 32: // Space
-
-           break;
-   }
-   glutPostRedisplay();
+    game.keyRelease(key);
 }

@@ -9,7 +9,14 @@
 
 Game::Game()
 {
+    player = new Player(64, 64);
+    sprites.push_back(player);
     addEnemy(16.0f, 16.0f);
+}
+
+void Game::update()
+{
+    player->move();
 }
 
 void Game::draw()
@@ -25,3 +32,46 @@ void Game::addEnemy(float x, float y)
 }
 
 
+void Game::keyPress(unsigned char key)
+{
+    switch(key) {
+        case 'w':
+            player->keysDown[0] = true;
+            break;
+        case 'a':
+            player->keysDown[1] = true;
+            break;
+        case 's':
+            player->keysDown[2] = true;
+            break;
+        case 'd':
+            player->keysDown[3] = true;
+            break;
+        case 27: // Escape
+            exit(0);
+            break;
+    }
+    glutPostRedisplay();
+}
+
+void Game::keyRelease(unsigned char key)
+{
+    switch(key) {
+       case 'w':
+            player->keysDown[0] = false;
+            break;
+       case 'a':
+            player->keysDown[1] = false;
+            break;
+       case 's':
+            player->keysDown[2] = false;
+           break;
+       case 'd':
+            player->keysDown[3] = false;
+           break;
+       case 32: // Space
+
+           break;
+   }
+   glutPostRedisplay();
+}
