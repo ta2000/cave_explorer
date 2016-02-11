@@ -5,13 +5,75 @@
 #include "Enemy.h"
 
 #include <GL/glut.h>
+#include <iostream>
 #include <vector>
+
+#include <stdlib.h> // For srand and rand
+#include <time.h>   // Use time for seed
 
 Game::Game()
 {
     player = new Player(64, 64);
     sprites.push_back(player);
     addEnemy(16.0f, 16.0f);
+
+    createMap();
+
+    for (unsigned int i=0; i<sizeof(gameMap)/sizeof(gameMap[0]); i++)
+    {
+        for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
+        {
+            std::cout << (gameMap[i][j]) << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+void Game::createMap()
+{
+    srand(time(NULL));
+
+    unsigned int room_x, room_y, room_width, room_height;
+
+    // Fill map with blocked
+    for (unsigned int i=0; i<sizeof(gameMap)/sizeof(gameMap[0]); i++)
+    {
+        for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
+        {
+            gameMap[i][j] = 'X';
+        }
+    }
+
+    // Create rooms
+    for (int rooms=0; rooms<20; rooms++)
+    {
+        room_width = rand() % 3 + 3;
+        room_height = rand() % 3 + 3;
+        room_x = rand() % sizeof(gameMap[0]) + 1;
+        room_y = rand() % sizeof(gameMap)/sizeof(gameMap[0]) + 1;
+
+        // Prevent the room dimensions from exceeding map size
+        if ( (room_x + room_width) > sizeof(gameMap[0]) )
+        {
+            room_x -= ( sizeof(gameMap[0]) - room_width );
+        }
+        if ( (room_y + room_height) > sizeof(gameMap)/sizeof(gameMap[0]) )
+        {
+            room_y -= ( sizeof(gameMap)/sizeof(gameMap[0]) - room_height );
+        }
+
+        // Clear out room
+        for (unsigned int i=room_y; i<(room_y + (room_height-1)); i++)
+        {
+            for (unsigned int j=room_x; j<(room_x + (room_width-1)); j++)
+            {
+                gameMap[i][j] = ' ';
+            }
+        }
+    }
+
+    // Add tunnels connecting rooms
+    // ...
 }
 
 void Game::update()
@@ -19,6 +81,7 @@ void Game::update()
     player->move();
 }
 
+// Draw all objects in the sprites vector
 void Game::draw()
 {
     for (auto &i : sprites) {
@@ -26,12 +89,13 @@ void Game::draw()
     }
 }
 
+// Add a new enemy object to the array of sprites
 void Game::addEnemy(float x, float y)
 {
     sprites.push_back(new Enemy(x, y));
 }
 
-
+// Move the player based on keyboard input
 void Game::keyPress(unsigned char key)
 {
     switch(key) {
@@ -68,9 +132,6 @@ void Game::keyRelease(unsigned char key)
            break;
        case 'd':
             player->keysDown[3] = false;
-           break;
-       case 32: // Space
-
            break;
    }
    glutPostRedisplay();
