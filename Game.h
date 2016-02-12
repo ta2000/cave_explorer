@@ -12,7 +12,7 @@ public:
 
     Player* player;
     std::vector<Sprite*> sprites;
-    char gameMap[16][32]; // [height][width]
+    char gameMap[16][16]; // [height][width]
 
     void update();
     void draw();
@@ -20,7 +20,7 @@ public:
     void keyRelease(unsigned char key);
 private:
     void addEnemy(float, float);
-    void createMap();
+    void createMap(int numRooms);
 };
 
 #endif

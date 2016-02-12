@@ -17,7 +17,7 @@ Game::Game()
     sprites.push_back(player);
     addEnemy(16.0f, 16.0f);
 
-    createMap();
+    createMap(5);
 
     for (unsigned int i=0; i<sizeof(gameMap)/sizeof(gameMap[0]); i++)
     {
@@ -29,7 +29,7 @@ Game::Game()
     }
 }
 
-void Game::createMap()
+void Game::createMap(int numRooms)
 {
     srand(time(NULL));
 
@@ -45,8 +45,8 @@ void Game::createMap()
     }
 
     // Create rooms
-    int caveCoords[10][2];
-    for (int rooms=0; rooms<10; rooms++)
+    int caveCoords[numRooms][2];
+    for (int rooms=0; rooms<numRooms; rooms++)
     {
         // Generate room with random dimensions and location
         room_width = rand() % 3 + 3;
@@ -96,12 +96,11 @@ void Game::createMap()
             startY = caveCoords[i+1][0];
 
         // Horizontal tunnels
-        std::cout << "[" << (caveCoords[i][1]) << ", " << (caveCoords[i][0]) << "] [" << (caveCoords[i+1][1]) << ", " << (caveCoords[i+1][0]) << "]" << std::endl;
         for (int j=startX; j<abs((caveCoords[i][1])-(caveCoords[i+1][1]))+startX+1; j++)
         {
             gameMap[caveCoords[i][0]][j] = ' ';
         }
-
+        // Vertical tunnels
         for (int j=startY; j<abs((caveCoords[i][0])-(caveCoords[i+1][0]))+startY+1; j++)
         {
             gameMap[j][caveCoords[i+1][1]] = ' ';
