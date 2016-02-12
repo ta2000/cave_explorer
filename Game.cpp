@@ -8,7 +8,7 @@
 #include <iostream>
 #include <vector>
 
-#include <stdlib.h> // For srand and rand
+#include <stdlib.h> // For math and random
 #include <time.h>   // Use time for seed
 
 Game::Game()
@@ -40,13 +40,15 @@ void Game::createMap()
     {
         for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
         {
-            gameMap[i][j] = 'X';
+            gameMap[i][j] = 'x';
         }
     }
 
     // Create rooms
-    for (int rooms=0; rooms<20; rooms++)
+    int caveCoords[10][2];
+    for (int rooms=0; rooms<10; rooms++)
     {
+        // Generate room with random dimensions and location
         room_width = rand() % 3 + 3;
         room_height = rand() % 3 + 3;
         room_x = rand() % sizeof(gameMap[0]) + 1;
@@ -62,6 +64,10 @@ void Game::createMap()
             room_y -= ( sizeof(gameMap)/sizeof(gameMap[0]) - room_height );
         }
 
+        // Save coords of rooms to array
+        caveCoords[rooms][0] = room_y;
+        caveCoords[rooms][1] = room_x;
+
         // Clear out room
         for (unsigned int i=room_y; i<(room_y + (room_height-1)); i++)
         {
@@ -73,7 +79,35 @@ void Game::createMap()
     }
 
     // Add tunnels connecting rooms
-    // ...
+    for (unsigned int i=0; i<sizeof(caveCoords)/sizeof(caveCoords[0])-1; i++)
+    {
+        // Horizontal tunnels
+        int startX; // Determine which room is farthest left
+        if (caveCoords[i][1] < caveCoords[i+1][1])
+            startX = caveCoords[i][1];
+        else
+            startX = caveCoords[i+1][1];
+
+        // Vertical tunnels
+        int startY; // Determine which room is farthest up
+        if (caveCoords[i][0] < caveCoords[i+1][0])
+            startY = caveCoords[i][0];
+        else
+            startY = caveCoords[i+1][0];
+
+        // Horizontal tunnels
+        std::cout << "[" << (caveCoords[i][1]) << ", " << (caveCoords[i][0]) << "] [" << (caveCoords[i+1][1]) << ", " << (caveCoords[i+1][0]) << "]" << std::endl;
+        for (int j=startX; j<abs((caveCoords[i][1])-(caveCoords[i+1][1]))+startX+1; j++)
+        {
+            gameMap[caveCoords[i][0]][j] = ' ';
+        }
+
+        for (int j=startY; j<abs((caveCoords[i][0])-(caveCoords[i+1][0]))+startY+1; j++)
+        {
+            gameMap[j][caveCoords[i+1][1]] = ' ';
+        }
+    }
+
 }
 
 void Game::update()
