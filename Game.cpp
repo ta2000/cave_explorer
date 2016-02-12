@@ -15,7 +15,6 @@ Game::Game()
 {
     player = new Player(64, 64);
     sprites.push_back(player);
-    addEnemy(16.0f, 16.0f);
 
     createMap(5);
 
@@ -33,6 +32,9 @@ void Game::createMap(int numRooms)
 {
     srand(time(NULL));
 
+    // ============
+    // CREATE ROOMS
+    // ============
     unsigned int room_x, room_y, room_width, room_height;
 
     // Fill map with blocked
@@ -106,6 +108,21 @@ void Game::createMap(int numRooms)
             gameMap[j][caveCoords[i+1][1]] = ' ';
         }
     }
+
+
+    // ==============
+    // CREATE ENEMIES
+    // ==============
+    /*for (unsigned int i=0; i<sizeof(gameMap)/sizeof(gameMap[0]); i++)
+    {
+        for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
+        {
+            if (gameMap[i][j] == ' ' && rand() % 10 == 0) // Frequency of enemies
+            {
+                gameMap[i][j] = 'e';
+            }
+        }
+    }*/
 
 }
 
