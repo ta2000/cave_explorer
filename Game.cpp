@@ -14,7 +14,7 @@
 
 Game::Game()
 {
-    player = new Player(304, 224, 5); // Screen width:height / 2 - (scale/2)
+    player = new Player(304, 224, 8); // Screen width:height / 2 - (scale/2)
 
     createMap(10);
 
