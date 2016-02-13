@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Wall.h"
 
 #include <GL/glut.h>
 #include <iostream>
@@ -14,7 +15,6 @@
 Game::Game()
 {
     player = new Player(304, 224); // Screen width:height / 2 - (scale/2)
-    addEnemy(16, 16);
 
     createMap(8);
 
@@ -22,7 +22,11 @@ Game::Game()
     {
         for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
         {
-            std::cout << (gameMap[i][j]) << " ";
+            std::cout << (gameMap[i][j]);
+            if (gameMap[i][j] == 'x')
+            {
+                addWall(j*32, i*32);
+            }
         }
         std::cout << std::endl;
     }
@@ -144,6 +148,11 @@ void Game::draw()
 void Game::addEnemy(float x, float y)
 {
     sprites.push_back(new Enemy(x, y));
+}
+// Add a new wall object to the array of sprites
+void Game::addWall(float x, float y)
+{
+    sprites.push_back(new Wall(x, y));
 }
 
 // Move the player based on keyboard input

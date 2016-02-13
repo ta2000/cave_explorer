@@ -20,6 +20,7 @@ public:
     void keyRelease(unsigned char key);
 private:
     void addEnemy(float, float);
+    void addWall(float, float);
     void createMap(int numRooms);
 };
 
