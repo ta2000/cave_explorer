@@ -27,6 +27,7 @@ Game::Game()
             {
                 addWall(j*32, i*32);
             }
+
         }
         std::cout << std::endl;
     }
@@ -55,19 +56,19 @@ void Game::createMap(int numRooms)
     for (int rooms=0; rooms<numRooms; rooms++)
     {
         // Generate room with random dimensions and location
-        room_width = rand() % 5 + 5;
-        room_height = rand() % 5 + 5;
+        room_width = rand() % 4 + 8;
+        room_height = rand() % 4 + 8;
         room_x = rand() % sizeof(gameMap[0]) + 1;
         room_y = rand() % sizeof(gameMap)/sizeof(gameMap[0]) + 1;
 
         // Prevent the room dimensions from exceeding map size
         if ( (room_x + room_width) > sizeof(gameMap[0]) )
         {
-            room_x -= ( sizeof(gameMap[0]) - room_width );
+            room_x = ( sizeof(gameMap[0]) - room_width );
         }
         if ( (room_y + room_height) > sizeof(gameMap)/sizeof(gameMap[0]) )
         {
-            room_y -= ( sizeof(gameMap)/sizeof(gameMap[0]) - room_height );
+            room_y = ( sizeof(gameMap)/sizeof(gameMap[0]) - room_height );
         }
 
         // Save coords of rooms to array
@@ -99,19 +100,21 @@ void Game::createMap(int numRooms)
         if (caveCoords[i][0] < caveCoords[i+1][0])
             startY = caveCoords[i][0];
         else
-            startY = caveCoords[i+1][0];
+            startY = caveCoords[i+1][0]+2; // +2 prevents offset on left-up paths
 
         // Horizontal tunnels
         for (int j=startX; j<abs((caveCoords[i][1])-(caveCoords[i+1][1]))+startX+1; j++)
         {
             gameMap[caveCoords[i][0]][j] = ' ';
             gameMap[caveCoords[i][0]+1][j] = ' ';
+            gameMap[caveCoords[i][0]+2][j] = ' ';
         }
         // Vertical tunnels
         for (int j=startY; j<abs((caveCoords[i][0])-(caveCoords[i+1][0]))+startY+1; j++)
         {
             gameMap[j][caveCoords[i+1][1]] = ' ';
             gameMap[j][caveCoords[i+1][1]+1] = ' ';
+            gameMap[j][caveCoords[i+1][1]+2] = ' ';
         }
     }
 

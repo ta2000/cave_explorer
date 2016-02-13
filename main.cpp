@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     glutCreateWindow("Cave Explorer");
 
-    glClearColor(0.9f, 0.9f, 0.9f, 0.0f);
+    glClearColor(0.1f, 0.02f, 0.0f, 0.0f);
 	glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0, 640, 480, 0, 0, 1);
@@ -46,7 +46,7 @@ void update(int value)
 void draw()
 {
     glClear(GL_COLOR_BUFFER_BIT);
-	glColor3f(0.0, 0.0, 0.0);
+	glColor3f(0.3, 0.1, 0.0);
 
     game.draw();
 
