@@ -34,3 +34,17 @@ void Sprite::draw()
         glEnd();
 	glPopMatrix();
 }
+
+bool Sprite::collision(Sprite* obj)
+{
+    bool collided = false;
+
+    if (this->x < obj->x + 32 &&
+		this->x + 32 > obj->x &&
+		this->y < obj->y + 32 &&
+		32 + this->y > obj->y) {
+        collided = true;
+    }
+
+    return collided;
+}

@@ -4,6 +4,8 @@
 #include <GL/glut.h>
 #include <iostream>
 
+Game game;
+
 Player::Player(float x, float y) : Sprite(x, y)
 {
     this->x = x;
@@ -15,15 +17,50 @@ Player::Player(float x, float y) : Sprite(x, y)
 void Player::move()
 {
     if (this->keysDown[0] == true) {
-        this->setY(this->y-=3.0f);
+        for (auto &i : game.sprites) {
+            i->setY(i->y+3);
+        }
     }
     if (this->keysDown[1] == true) {
-        this->setX(this->x-=3.0f);
+        for (auto &i : game.sprites) {
+            i->setX(i->x+3);
+        }
     }
     if (this->keysDown[2] == true) {
-        this->setY(this->y+=3.0f);
+        for (auto &i : game.sprites) {
+            i->setY(i->y-3);
+        }
     }
     if (this->keysDown[3] == true) {
-        this->setX(this->x+=3.0f);
+        for (auto &i : game.sprites) {
+            i->setX(i->x-3);
+        }
+    }
+
+    // Check collisions
+    for (auto &i : game.sprites) {
+        if (collision(i))
+        {
+            if ( this->keysDown[0] ) {
+                for (auto &i : game.sprites) {
+                    i->setY(i->y-3);
+                }
+            };
+            if ( this->keysDown[1] ) {
+                for (auto &i : game.sprites) {
+                    i->setX(i->x-3);
+                }
+            };
+            if ( this->keysDown[2] ) {
+                for (auto &i : game.sprites) {
+                    i->setY(i->y+3);
+                }
+            };
+            if ( this->keysDown[3] ) {
+                for (auto &i : game.sprites) {
+                    i->setX(i->x+3);
+                }
+            };
+        }
     }
 }

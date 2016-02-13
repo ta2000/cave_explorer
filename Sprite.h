@@ -11,6 +11,7 @@ public:
     void setX(float value);
     void setY(float value);
     void draw();
+    bool collision(Sprite* obj);
 private:
 };
 

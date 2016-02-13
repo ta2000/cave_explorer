@@ -13,10 +13,10 @@
 
 Game::Game()
 {
-    player = new Player(64, 64);
-    sprites.push_back(player);
+    player = new Player(304, 224); // Screen width:height / 2 - (scale/2)
+    addEnemy(16, 16);
 
-    createMap(5);
+    createMap(8);
 
     for (unsigned int i=0; i<sizeof(gameMap)/sizeof(gameMap[0]); i++)
     {
@@ -134,6 +134,7 @@ void Game::update()
 // Draw all objects in the sprites vector
 void Game::draw()
 {
+    player->draw();
     for (auto &i : sprites) {
         i->draw();
     }

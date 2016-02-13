@@ -8,7 +8,7 @@ void update(int value);
 void handleKeyPress(unsigned char key, int x, int y);
 void handleKeyRelease(unsigned char key, int x, int y);
 
-Game game;
+extern Game game;
 
 int main(int argc, char *argv[])
 {
