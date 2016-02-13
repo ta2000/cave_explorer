@@ -14,15 +14,15 @@
 
 Game::Game()
 {
-    player = new Player(304, 224); // Screen width:height / 2 - (scale/2)
+    player = new Player(304, 224, 5); // Screen width:height / 2 - (scale/2)
 
-    createMap(8);
+    createMap(10);
 
     for (unsigned int i=0; i<sizeof(gameMap)/sizeof(gameMap[0]); i++)
     {
         for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
         {
-            std::cout << (gameMap[i][j]);
+            std::cout << (gameMap[i][j]) << " ";
             if (gameMap[i][j] == 'x')
             {
                 addWall(j*32, i*32);
@@ -55,8 +55,8 @@ void Game::createMap(int numRooms)
     for (int rooms=0; rooms<numRooms; rooms++)
     {
         // Generate room with random dimensions and location
-        room_width = rand() % 3 + 3;
-        room_height = rand() % 3 + 3;
+        room_width = rand() % 5 + 5;
+        room_height = rand() % 5 + 5;
         room_x = rand() % sizeof(gameMap[0]) + 1;
         room_y = rand() % sizeof(gameMap)/sizeof(gameMap[0]) + 1;
 
@@ -105,11 +105,13 @@ void Game::createMap(int numRooms)
         for (int j=startX; j<abs((caveCoords[i][1])-(caveCoords[i+1][1]))+startX+1; j++)
         {
             gameMap[caveCoords[i][0]][j] = ' ';
+            gameMap[caveCoords[i][0]+1][j] = ' ';
         }
         // Vertical tunnels
         for (int j=startY; j<abs((caveCoords[i][0])-(caveCoords[i+1][0]))+startY+1; j++)
         {
             gameMap[j][caveCoords[i+1][1]] = ' ';
+            gameMap[j][caveCoords[i+1][1]+1] = ' ';
         }
     }
 
@@ -140,7 +142,10 @@ void Game::draw()
 {
     player->draw();
     for (auto &i : sprites) {
-        i->draw();
+        if (i->distance(player) < glutGet(GLUT_WINDOW_WIDTH))
+        {
+            i->draw();
+        }
     }
 }
 

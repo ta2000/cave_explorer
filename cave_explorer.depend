@@ -18,7 +18,7 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1455330806 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
+1455337024 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
 	"Game.h"
 	"Sprite.h"
 	"Player.h"
@@ -30,7 +30,7 @@
 	<stdlib.h>
 	<time.h>
 
-1455330666 c:\users\toman_000\desktop\cave_explorer\game.h
+1455336585 c:\users\toman_000\desktop\cave_explorer\game.h
 	<vector>
 	"Sprite.h"
 	"Player.h"
@@ -40,18 +40,20 @@
 	<GL/glut.h>
 	<stdlib.h>
 
-1455330934 source:c:\users\toman_000\desktop\cave_explorer\sprite.cpp
+1455336203 source:c:\users\toman_000\desktop\cave_explorer\sprite.cpp
 	"Sprite.h"
 	"Game.h"
 	<GL/glut.h>
+	<stdlib.h>
+	<math.h>
 	<iostream>
 
-1455328992 c:\users\toman_000\desktop\cave_explorer\sprite.h
+1455336011 c:\users\toman_000\desktop\cave_explorer\sprite.h
 
-1455077648 c:\users\toman_000\desktop\cave_explorer\player.h
+1455336663 c:\users\toman_000\desktop\cave_explorer\player.h
 	"Sprite.h"
 
-1455329901 source:c:\users\toman_000\desktop\cave_explorer\player.cpp
+1455336718 source:c:\users\toman_000\desktop\cave_explorer\player.cpp
 	"Player.h"
 	"Game.h"
 	<GL/glut.h>

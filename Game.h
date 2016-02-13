@@ -12,7 +12,7 @@ public:
 
     Player* player;
     std::vector<Sprite*> sprites;
-    char gameMap[16][32]; // [height][width]
+    char gameMap[64][64]; // [height][width]
 
     void update();
     void draw();

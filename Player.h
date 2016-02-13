@@ -9,10 +9,10 @@
 
 class Player : public Sprite {
 public:
-    Player(float, float);
+    Player(float, float, float);
     ~Player(){};
 
-    float x,y,w,h;
+    float x,y,w,h,speed;
     bool keysDown[KEYSDOWN_SIZE] = {false, false, false, false};
 
     void move();

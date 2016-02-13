@@ -12,6 +12,7 @@ public:
     void setY(float value);
     void draw();
     bool collision(Sprite* obj);
+    float distance(Sprite* obj);
 private:
 };
 

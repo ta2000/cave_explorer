@@ -2,6 +2,8 @@
 #include "Game.h"
 
 #include <GL/glut.h>
+#include <stdlib.h>
+#include <math.h>
 #include <iostream>
 
 Sprite::Sprite(float x, float y)
@@ -47,4 +49,13 @@ bool Sprite::collision(Sprite* obj)
     }
 
     return collided;
+}
+
+float Sprite::distance(Sprite* obj)
+{
+    float dx = abs((this->x+32/2) - (obj->x+32/2));
+    float dy = abs((this->y+32/2) - (obj->y+32/2));
+	float hyp = sqrt( (dx*dx)+(dy*dy) );
+
+	return hyp;
 }
