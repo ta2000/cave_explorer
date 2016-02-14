@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Game.h"
+#include "Wall.h"
 
 #include <GL/glut.h>
 #include <iostream>
@@ -15,7 +16,7 @@ Player::Player(float x, float y, float speed) : Sprite(x, y)
     this->speed = speed;
 }
 
-void Player::move()
+void Player::update()
 {
     if (this->keysDown[0] == true) {
         for (auto &i : game.sprites) {
@@ -40,7 +41,7 @@ void Player::move()
 
     // Check collisions
     for (auto &i : game.sprites) {
-        if (collision(i))
+        if (collision(i) && dynamic_cast<Wall*>(i) != NULL)
         {
             if ( this->keysDown[0] ) {
                 for (auto &i : game.sprites) {

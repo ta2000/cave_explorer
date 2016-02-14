@@ -18,10 +18,11 @@ public:
     void draw();
     void keyPress(unsigned char key);
     void keyRelease(unsigned char key);
+    void createMap(int numRooms);
 private:
     void addEnemy(float, float);
     void addWall(float, float);
-    void createMap(int numRooms);
+    void addExit(float, float);
 };
 
 #endif

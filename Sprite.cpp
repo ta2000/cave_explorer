@@ -24,6 +24,10 @@ void Sprite::setY(float value)
     this->y = value;
 }
 
+void Sprite::update()
+{
+}
+
 void Sprite::draw()
 {
     glPushMatrix();

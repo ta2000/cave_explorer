@@ -15,7 +15,7 @@ public:
     float x,y,w,h,speed;
     bool keysDown[KEYSDOWN_SIZE] = {false, false, false, false};
 
-    void move();
+    void update();
 private:
 };
 
