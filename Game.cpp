@@ -18,6 +18,9 @@ Game::Game()
 
     createMap(10);
 
+    float difY; // The y value to move all objects
+    float difX; // The x value to move all objects
+
     for (unsigned int i=0; i<sizeof(gameMap)/sizeof(gameMap[0]); i++)
     {
         for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
@@ -27,9 +30,22 @@ Game::Game()
             {
                 addWall(j*32, i*32);
             }
+            else if (gameMap[i][j] == 'p')
+            {
+                // Set the view on the player
+                difX = j*32 - player->x;
+                difY = i*32 - player->y;
+            }
 
         }
         std::cout << std::endl;
+    }
+
+    // Center the view on the player by moving all other objects
+    for (auto &i : sprites)
+    {
+        i->x -= difX;
+        i->y -= difY;
     }
 }
 
@@ -133,6 +149,9 @@ void Game::createMap(int numRooms)
         }
     }*/
 
+    // Add the player in the first room
+    gameMap[caveCoords[0][0]+1][caveCoords[0][1]+1] = 'p'; // Place the player 1 tile down and to the right of the first room
+
 }
 
 void Game::update()
@@ -145,10 +164,10 @@ void Game::draw()
 {
     player->draw();
     for (auto &i : sprites) {
-        if (i->distance(player) < glutGet(GLUT_WINDOW_WIDTH))
-        {
+        //if (i->distance(player) < glutGet(GLUT_WINDOW_WIDTH))
+        //{
             i->draw();
-        }
+        //}
     }
 }
 
