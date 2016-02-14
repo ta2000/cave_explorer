@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Game.h"
 #include "Wall.h"
+#include "Gun.h"
 
 #include <GL/glut.h>
 #include <iostream>
@@ -13,6 +14,7 @@ Player::Player(float x, float y, float speed) : Sprite(x, y)
     this->y = y;
     this->w = 32;
     this->h = 32;
+    this->gun = (new Gun(0, 0, 20, 20, 3));
     this->angle = 0;
     this->speed = speed;
 }
@@ -20,6 +22,19 @@ Player::Player(float x, float y, float speed) : Sprite(x, y)
 void Player::update()
 {
     // Shooting
+    if (gun != nullptr)
+    {
+        // Update gun
+        gun->update();
+
+        // Shoot
+        if (mouse == true && gun->cooldown <= 0)
+        {
+            gun->fire();
+            // Reset the cooldown
+            gun->cooldown = gun->fireRate;
+        }
+    }
 
     // Movement
     if (this->keysDown[0] == true) {

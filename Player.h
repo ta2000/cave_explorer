@@ -16,7 +16,7 @@ public:
     float x,y,w,h,speed,angle;
     bool keysDown[KEYSDOWN_SIZE] = {false, false, false, false};
     bool mouse = false;
-    Gun* gun = (nullptr);
+    Gun* gun;
 
     void update();
 private:

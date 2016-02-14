@@ -9,12 +9,14 @@
 
 class Gun : public Sprite {
 public:
-    Gun(float, float);
+    Gun(float, float, int, int, int);
     ~Gun(){};
 
-    float x,y,w,h,rotation,damage,fireRate,spread;
+    int fireRate, cooldown,damage,spread;
+    float x,y,w,h,rotation;
 
-    void fire(float damage, float spread);
+    void fire();
+    void update();
 private:
 };
 
