@@ -4,6 +4,7 @@
 #include <vector>
 #include "Sprite.h"
 #include "Player.h"
+#include "Exit.h"
 
 class Game {
 public:
@@ -11,6 +12,7 @@ public:
     ~Game(){};
 
     Player* player;
+    Exit* levelExit;
     std::vector<Sprite*> sprites;
     char gameMap[64][128]; // [height][width]
 
@@ -22,7 +24,6 @@ public:
 private:
     void addEnemy(float, float);
     void addWall(float, float);
-    void addExit(float, float);
 };
 
 #endif

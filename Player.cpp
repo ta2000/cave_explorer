@@ -41,7 +41,7 @@ void Player::update()
 
     // Check collisions
     for (auto &i : game.sprites) {
-        if (collision(i) && dynamic_cast<Wall*>(i) != NULL)
+        if (collision(i) && dynamic_cast<Wall*>(i) != NULL) // Only collide if wall
         {
             if ( this->keysDown[0] ) {
                 for (auto &i : game.sprites) {

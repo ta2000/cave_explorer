@@ -1,5 +1,6 @@
 #include "Sprite.h"
 #include "Game.h"
+#include "Exit.h"
 
 #include <GL/glut.h>
 #include <stdlib.h>
@@ -26,6 +27,7 @@ void Sprite::setY(float value)
 
 void Sprite::update()
 {
+    // So we can call update on any sprite
 }
 
 void Sprite::draw()

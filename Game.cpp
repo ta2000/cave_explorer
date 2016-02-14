@@ -16,6 +16,7 @@
 Game::Game()
 {
     player = new Player(304, 224, 8); // Screen width:height / 2 - (scale/2)
+    levelExit = new Exit(0, 0);
 
     createMap(10);
 }
@@ -23,6 +24,7 @@ Game::Game()
 void Game::createMap(int numRooms)
 {
     srand(time(NULL));
+    sprites.push_back(levelExit);
 
     // ============
     // CREATE ROOMS
@@ -137,13 +139,15 @@ void Game::createMap(int numRooms)
     {
         for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
         {
+            std::cout << (gameMap[i][j]) << " ";
             if (gameMap[i][j] == 'x')
             {
                 addWall(j*32, i*32);
             }
             else if (gameMap[i][j] == 'e')
             {
-                addExit(j*32, i*32);
+                levelExit->setX(j*32);
+                levelExit->setY(i*32);
             }
             else if (gameMap[i][j] == 'p')
             {
@@ -153,6 +157,7 @@ void Game::createMap(int numRooms)
             }
 
         }
+        std::cout << std::endl;
     }
 
     // Center the view on the player by moving all other objects
@@ -166,15 +171,14 @@ void Game::createMap(int numRooms)
 void Game::update()
 {
     player->update();
-    for (auto &i : sprites) {
-        i->update();
-    }
+    levelExit->update();
 }
 
 // Draw all objects in the sprites vector
 void Game::draw()
 {
     player->draw();
+    levelExit->draw();
     for (auto &i : sprites) {
         if (i->distance(player) < glutGet(GLUT_WINDOW_WIDTH))
         {
@@ -192,11 +196,6 @@ void Game::addEnemy(float x, float y)
 void Game::addWall(float x, float y)
 {
     sprites.push_back(new Wall(x, y));
-}
-// Add a new exit object to the array of sprites
-void Game::addExit(float x, float y)
-{
-    sprites.push_back(new Exit(x, y));
 }
 
 // Move the player based on keyboard input
