@@ -7,12 +7,15 @@
 #include <math.h>
 #include <iostream>
 
+#define PI 3.14159265359
+
 Sprite::Sprite(float x, float y)
 {
     this->x = x;
     this->y = y;
     this->w = 32;
     this->h = 32;
+    this->angle = 0.0; // Normal
 }
 
 void Sprite::setX(float value)
@@ -25,6 +28,11 @@ void Sprite::setY(float value)
     this->y = value;
 }
 
+void Sprite::setAngle(float value)
+{
+    this->angle = value;
+}
+
 void Sprite::update()
 {
     // So we can call update on any sprite
@@ -33,6 +41,11 @@ void Sprite::update()
 void Sprite::draw()
 {
     glPushMatrix();
+
+        glTranslatef(x-16, y-16, 0.0f);
+        glRotatef(angle*180/PI, 0.0f, 0.0f, 1.0f);
+        glTranslatef(-x-16, -y-16, 0.0f);
+
         glBegin(GL_QUADS);
         glNormal3f(0.0f, 1.0f, 0.0f);
             glVertex2f(x, y);

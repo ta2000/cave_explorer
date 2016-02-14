@@ -13,6 +13,8 @@ public:
     ~Gun(){};
 
     float x,y,w,h,rotation,damage,fireRate,spread;
+
+    void fire(float damage, float spread);
 private:
 };
 

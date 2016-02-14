@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "Sprite.h"
+#include "Gun.h"
 
 #ifndef KEYSDOWN_SIZE
 #define KEYSDOWN_SIZE 4
@@ -12,8 +13,10 @@ public:
     Player(float, float, float);
     ~Player(){};
 
-    float x,y,w,h,speed;
+    float x,y,w,h,speed,angle;
     bool keysDown[KEYSDOWN_SIZE] = {false, false, false, false};
+    bool mouse = false;
+    Gun* gun = (nullptr);
 
     void update();
 private:

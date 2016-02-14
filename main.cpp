@@ -7,6 +7,8 @@ void draw();
 void update(int value);
 void handleKeyPress(unsigned char key, int x, int y);
 void handleKeyRelease(unsigned char key, int x, int y);
+void handleMouseDown(int button, int state, int x, int y);
+void handleMouseMove(int x, int y);
 
 extern Game game;
 
@@ -26,8 +28,12 @@ int main(int argc, char *argv[])
 
     glutDisplayFunc(draw);
 
+    glutSetCursor(GLUT_CURSOR_FULL_CROSSHAIR);
+
     glutKeyboardFunc(handleKeyPress);
     glutKeyboardUpFunc(handleKeyRelease);
+    glutMouseFunc(handleMouseDown);
+    glutPassiveMotionFunc(handleMouseMove);
 
     glutTimerFunc(25, update, 0);
 
@@ -62,4 +68,16 @@ void handleKeyPress(unsigned char key, int x, int y)
 void handleKeyRelease(unsigned char key, int x, int y)
 {
     game.keyRelease(key);
+}
+
+// Mouse handling
+void handleMouseDown(int button, int state, int x, int y)
+{
+    game.mouseDown(button, state, x, y);
+    glutMotionFunc(handleMouseMove);
+}
+
+void handleMouseMove(int x, int y)
+{
+    game.mouseMove(x, y);
 }

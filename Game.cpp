@@ -10,12 +10,13 @@
 #include <iostream>
 #include <vector>
 
-#include <stdlib.h> // For math and random
+#include <stdlib.h> // For abs and random
+#include <math.h> // For atan2
 #include <time.h>   // Use time for seed
 
 Game::Game()
 {
-    player = new Player(304, 224, 8); // Screen width:height / 2 - (scale/2)
+    player = new Player(336, 256, 8); // Screen width:height / 2 + (scale/2)
     levelExit = new Exit(0, 0);
 
     createMap(10);
@@ -172,6 +173,11 @@ void Game::update()
 {
     player->update();
     levelExit->update();
+
+    for (auto &i : bullets)
+    {
+        i->update();
+    }
 }
 
 // Draw all objects in the sprites vector
@@ -179,11 +185,17 @@ void Game::draw()
 {
     player->draw();
     levelExit->draw();
+
     for (auto &i : sprites) {
         if (i->distance(player) < glutGet(GLUT_WINDOW_WIDTH))
         {
             i->draw();
         }
+    }
+
+    for (auto &i : bullets)
+    {
+        i->draw();
     }
 }
 
@@ -238,4 +250,17 @@ void Game::keyRelease(unsigned char key)
            break;
    }
    glutPostRedisplay();
+}
+
+void Game::mouseDown(int button, int state, int x, int y)
+{
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+        player->mouse = true;
+    else if (button == GLUT_LEFT_BUTTON && state == GLUT_UP)
+        player->mouse = false;
+}
+
+void Game::mouseMove(int x, int y)
+{
+    player->setAngle(atan2(y - player->y, x - player->x));
 }

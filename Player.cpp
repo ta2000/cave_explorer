@@ -13,11 +13,15 @@ Player::Player(float x, float y, float speed) : Sprite(x, y)
     this->y = y;
     this->w = 32;
     this->h = 32;
+    this->angle = 0;
     this->speed = speed;
 }
 
 void Player::update()
 {
+    // Shooting
+
+    // Movement
     if (this->keysDown[0] == true) {
         for (auto &i : game.sprites) {
             i->setY(i->y+(this->speed));

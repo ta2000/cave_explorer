@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1455428442 source:c:\users\toman_000\desktop\cave_explorer\main.cpp
+1455484738 source:c:\users\toman_000\desktop\cave_explorer\main.cpp
 	"Game.h"
 	<GL/glut.h>
 	<stdlib.h>
@@ -18,7 +18,7 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1455467652 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
+1455484956 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
 	"Game.h"
 	"Sprite.h"
 	"Player.h"
@@ -29,20 +29,23 @@
 	<iostream>
 	<vector>
 	<stdlib.h>
+	<math.h>
 	<time.h>
 
-1455464296 c:\users\toman_000\desktop\cave_explorer\game.h
+1455483334 c:\users\toman_000\desktop\cave_explorer\game.h
 	<vector>
+	<list>
 	"Sprite.h"
 	"Player.h"
 	"Exit.h"
+	"Bullet.h"
 
 1454908596 c:\users\toman_000\desktop\cave_explorer\game.cpp
 	"Game.h"
 	<GL/glut.h>
 	<stdlib.h>
 
-1455468323 source:c:\users\toman_000\desktop\cave_explorer\sprite.cpp
+1455484500 source:c:\users\toman_000\desktop\cave_explorer\sprite.cpp
 	"Sprite.h"
 	"Game.h"
 	"Exit.h"
@@ -51,12 +54,13 @@
 	<math.h>
 	<iostream>
 
-1455465123 c:\users\toman_000\desktop\cave_explorer\sprite.h
+1455484136 c:\users\toman_000\desktop\cave_explorer\sprite.h
 
-1455434961 c:\users\toman_000\desktop\cave_explorer\player.h
+1455484906 c:\users\toman_000\desktop\cave_explorer\player.h
 	"Sprite.h"
+	"Gun.h"
 
-1455467439 source:c:\users\toman_000\desktop\cave_explorer\player.cpp
+1455484993 source:c:\users\toman_000\desktop\cave_explorer\player.cpp
 	"Player.h"
 	"Game.h"
 	"Wall.h"
@@ -79,13 +83,13 @@
 1455330628 c:\users\toman_000\desktop\cave_explorer\wall.h
 	"Sprite.h"
 
-1455409190 source:c:\users\toman_000\desktop\cave_explorer\gun.cpp
+1455480807 source:c:\users\toman_000\desktop\cave_explorer\gun.cpp
 	"Gun.h"
 	"Game.h"
 	<GL/glut.h>
 	<iostream>
 
-1455409699 c:\users\toman_000\desktop\cave_explorer\gun.h
+1455480797 c:\users\toman_000\desktop\cave_explorer\gun.h
 	"Sprite.h"
 
 1455468276 source:c:\users\toman_000\desktop\cave_explorer\exit.cpp
@@ -96,4 +100,13 @@
 
 1455466446 c:\users\toman_000\desktop\cave_explorer\exit.h
 	"Sprite.h"
+
+1455484397 source:c:\users\toman_000\desktop\cave_explorer\bullet.cpp
+	"Bullet.h"
+	"Game.h"
+	<GL/glut.h>
+	<iostream>
+	<math.h>
+
+1455481119 c:\users\toman_000\desktop\cave_explorer\bullet.h
 
