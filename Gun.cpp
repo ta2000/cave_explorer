@@ -3,18 +3,16 @@
 
 #include <GL/glut.h>
 #include <iostream>
+#include <math.h>
 
-Gun::Gun(float x, float y, int fireRate, int damage, int spread) : Sprite(x, y)
+extern Game game;
+
+Gun::Gun(int fireRate, float damage, float velocity)
 {
-    this->x = x;
-    this->y = y;
-    this->w = 16;
-    this->h = 32;
-
     this->fireRate = fireRate;
     this->cooldown = 0;
     this->damage = damage;
-    this->spread = spread;
+    this->velocity = velocity;
 }
 
 void Gun::update()
@@ -27,5 +25,5 @@ void Gun::update()
 
 void Gun::fire()
 {
-    std::cout << "Bang!" << std::endl;
+    game.bullets.push_back( new Bullet(x, y, angle, damage, velocity) );
 }

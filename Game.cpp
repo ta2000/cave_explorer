@@ -8,7 +8,6 @@
 
 #include <GL/glut.h>
 #include <iostream>
-#include <vector>
 
 #include <stdlib.h> // For abs and random
 #include <math.h> // For atan2
@@ -174,9 +173,18 @@ void Game::update()
     player->update();
     levelExit->update();
 
-    for (auto &i : bullets)
+    // Update all bullets
+    for (auto i = bullets.begin(); i != bullets.end();)
     {
-        i->update();
+        (*i)->update();
+        if ( (*i)->x < 0 || (*i)->x > glutGet(GLUT_WINDOW_WIDTH) || (*i)->y < 0 || (*i)->y > glutGet(GLUT_WINDOW_HEIGHT))
+        {
+            // Delete the bullet pointed to
+            delete (*i);
+            // Remove the pointer from the list
+            bullets.erase(i);
+        }
+        ++i;
     }
 }
 

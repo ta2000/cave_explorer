@@ -7,20 +7,21 @@
 
 #define PI 3.14159265359
 
-Bullet::Bullet(float x, float y, float direction, float damage, float spread)
+Bullet::Bullet(float x, float y, float angle, float damage, float velocity)
 {
     this->x = x;
     this->y = y;
-    this->radius = 8;
+    this->radius = 4;
 
-    this->direction = direction;
+    this->angle = angle;
     this->damage = damage;
-    this->spread = spread;
+    this->velocity = velocity;
 }
 
 void Bullet::update()
 {
-
+    x += cos( angle )*velocity;
+    y += sin( angle )*velocity;
 }
 
 void Bullet::draw()

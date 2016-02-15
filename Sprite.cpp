@@ -33,6 +33,21 @@ void Sprite::setAngle(float value)
     this->angle = value;
 }
 
+float Sprite::getX()
+{
+    return this->x;
+}
+
+float Sprite::getY()
+{
+    return this->y;
+}
+
+float Sprite::getAngle()
+{
+    return this->angle;
+}
+
 void Sprite::update()
 {
     // So we can call update on any sprite

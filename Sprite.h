@@ -4,13 +4,17 @@
 class Sprite {
 public:
     Sprite(float, float);
-    virtual ~Sprite(){}; // NEED TO DELETE PROPERTIES?
+    virtual ~Sprite(){};
 
     float x,y,w,h,angle;
 
     void setX(float value);
     void setY(float value);
     void setAngle(float value);
+    float getX();
+    float getY();
+    float getAngle();
+
     virtual void update();
     void draw();
     bool collision(Sprite* obj);

@@ -15,7 +15,7 @@ public:
 
     Player* player;
     Exit* levelExit;
-    std::vector<Sprite*> sprites;
+    std::list<Sprite*> sprites;
     std::list<Bullet*> bullets;
     char gameMap[64][128]; // [height][width]
 

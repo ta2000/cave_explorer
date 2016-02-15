@@ -7,13 +7,13 @@
 #define KEYSDOWN_SIZE 4
 #endif
 
-class Gun : public Sprite {
+class Gun {
 public:
-    Gun(float, float, int, int, int);
+    Gun(int, float, float);
     ~Gun(){};
 
-    int fireRate, cooldown,damage,spread;
-    float x,y,w,h,rotation;
+    int fireRate, cooldown;
+    float x,y,w,h, angle, damage, velocity;
 
     void fire();
     void update();

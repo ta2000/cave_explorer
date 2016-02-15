@@ -46,10 +46,16 @@
 			<Add library="gdi32" />
 			<Add directory="C:/freeglut/lib" />
 		</Linker>
+		<Unit filename="Bullet.cpp" />
+		<Unit filename="Bullet.h" />
 		<Unit filename="Enemy.cpp" />
 		<Unit filename="Enemy.h" />
+		<Unit filename="Exit.cpp" />
+		<Unit filename="Exit.h" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
+		<Unit filename="Gun.cpp" />
+		<Unit filename="Gun.h" />
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.h" />
 		<Unit filename="Sprite.cpp" />
