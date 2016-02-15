@@ -68,6 +68,7 @@ void Sprite::draw()
             glVertex2f(x+w, y+h);
             glVertex2f(x, y+h);
         glEnd();
+
 	glPopMatrix();
 }
 

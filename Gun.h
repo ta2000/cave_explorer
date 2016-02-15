@@ -13,7 +13,7 @@ public:
     ~Gun(){};
 
     int fireRate, cooldown;
-    float x,y,w,h, angle, damage, velocity;
+    float x,y,w,h, angle, damage, velocity, velX, velY;
 
     void fire();
     void update();

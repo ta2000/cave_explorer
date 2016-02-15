@@ -177,6 +177,7 @@ void Game::update()
     for (auto i = bullets.begin(); i != bullets.end();)
     {
         (*i)->update();
+        // Delete if off screen
         if ( (*i)->x < 0 || (*i)->x > glutGet(GLUT_WINDOW_WIDTH) || (*i)->y < 0 || (*i)->y > glutGet(GLUT_WINDOW_HEIGHT))
         {
             // Delete the bullet pointed to

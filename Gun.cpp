@@ -25,5 +25,5 @@ void Gun::update()
 
 void Gun::fire()
 {
-    game.bullets.push_back( new Bullet(x, y, angle, damage, velocity) );
+    game.bullets.push_back( new Bullet(x, y, angle, damage, velocity+16, velX, velY) );
 }

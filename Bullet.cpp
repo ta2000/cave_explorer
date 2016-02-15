@@ -7,12 +7,14 @@
 
 #define PI 3.14159265359
 
-Bullet::Bullet(float x, float y, float angle, float damage, float velocity)
+Bullet::Bullet(float x, float y, float angle, float damage, float velocity, float velX, float velY) : Sprite(x, y)
 {
     this->x = x;
     this->y = y;
     this->radius = 4;
 
+    this->velX = velX;
+    this->velY = velY;
     this->angle = angle;
     this->damage = damage;
     this->velocity = velocity;
@@ -20,8 +22,8 @@ Bullet::Bullet(float x, float y, float angle, float damage, float velocity)
 
 void Bullet::update()
 {
-    x += cos( angle )*velocity;
-    y += sin( angle )*velocity;
+    x += (cos( angle )*velocity)+velX;
+    y += (sin( angle )*velocity)+velY;
 }
 
 void Bullet::draw()
