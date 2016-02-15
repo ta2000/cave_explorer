@@ -111,16 +111,16 @@ void Game::createMap(int numRooms)
     // ==============
     // CREATE ENEMIES
     // ==============
-    /*for (unsigned int i=0; i<sizeof(gameMap)/sizeof(gameMap[0]); i++)
+    for (unsigned int i=0; i<sizeof(gameMap)/sizeof(gameMap[0]); i++)
     {
         for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
         {
-            if (gameMap[i][j] == ' ' && rand() % 10 == 0) // Frequency of enemies
+            if (gameMap[i][j] == ' ' && rand() % 50 == 0) // Frequency of enemies
             {
-                gameMap[i][j] = 'e';
+                gameMap[i][j] = 'm';
             }
         }
-    }*/
+    }
 
     // Add the player in the first room
     gameMap[caveCoords[0][0]+1][caveCoords[0][1]+1] = 'p'; // Place the player 1 tile down and to the right of the first room
@@ -143,6 +143,10 @@ void Game::createMap(int numRooms)
             if (gameMap[i][j] == 'x')
             {
                 addWall(j*32, i*32);
+            }
+            else if (gameMap[i][j] == 'm')
+            {
+                addEnemy(j*32, i*32);
             }
             else if (gameMap[i][j] == 'e')
             {
@@ -172,6 +176,12 @@ void Game::update()
 {
     player->update();
     levelExit->update();
+
+    for (auto i = sprites.begin(); i != sprites.end();)
+    {
+        (*i)->update();
+        ++i;
+    }
 
     // Update all bullets
     for (auto i = bullets.begin(); i != bullets.end();)

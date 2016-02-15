@@ -8,7 +8,9 @@ public:
     Enemy(float, float);
     ~Enemy(){};
 
-    float x,y,w,h;
+    float x,y,w,h,angle,speed;
+
+    void update();
 private:
 
 };

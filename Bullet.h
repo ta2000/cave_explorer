@@ -1,9 +1,7 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#include "Sprite.h"
-
-class Bullet : public Sprite {
+class Bullet {
 public:
     Bullet(float, float, float, float, float, float, float);
     ~Bullet(){};

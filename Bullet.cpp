@@ -7,7 +7,7 @@
 
 #define PI 3.14159265359
 
-Bullet::Bullet(float x, float y, float angle, float damage, float velocity, float velX, float velY) : Sprite(x, y)
+Bullet::Bullet(float x, float y, float angle, float damage, float velocity, float velX, float velY)
 {
     this->x = x;
     this->y = y;
