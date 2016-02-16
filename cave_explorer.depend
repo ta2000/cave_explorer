@@ -18,7 +18,7 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1455580079 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
+1455597473 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
 	"Game.h"
 	"Sprite.h"
 	"Player.h"
@@ -44,7 +44,7 @@
 	<GL/glut.h>
 	<stdlib.h>
 
-1455579987 source:c:\users\toman_000\desktop\cave_explorer\sprite.cpp
+1455594019 source:c:\users\toman_000\desktop\cave_explorer\sprite.cpp
 	"Sprite.h"
 	"Game.h"
 	"Exit.h"
@@ -53,13 +53,13 @@
 	<math.h>
 	<iostream>
 
-1455515192 c:\users\toman_000\desktop\cave_explorer\sprite.h
+1455593939 c:\users\toman_000\desktop\cave_explorer\sprite.h
 
-1455528264 c:\users\toman_000\desktop\cave_explorer\player.h
+1455598222 c:\users\toman_000\desktop\cave_explorer\player.h
 	"Sprite.h"
 	"Gun.h"
 
-1455572840 source:c:\users\toman_000\desktop\cave_explorer\player.cpp
+1455598221 source:c:\users\toman_000\desktop\cave_explorer\player.cpp
 	"Player.h"
 	"Game.h"
 	"Wall.h"
@@ -67,15 +67,18 @@
 	<GL/glut.h>
 	<iostream>
 
-1455579970 source:c:\users\toman_000\desktop\cave_explorer\enemy.cpp
+1455598727 source:c:\users\toman_000\desktop\cave_explorer\enemy.cpp
 	"Enemy.h"
 	"Game.h"
+	"Wall.h"
+	"Gun.h"
 	<GL/glut.h>
 	<iostream>
 	<math.h>
 
-1455578278 c:\users\toman_000\desktop\cave_explorer\enemy.h
+1455596697 c:\users\toman_000\desktop\cave_explorer\enemy.h
 	"Sprite.h"
+	"Gun.h"
 
 1455330643 source:c:\users\toman_000\desktop\cave_explorer\wall.cpp
 	"Wall.h"
@@ -85,7 +88,7 @@
 1455330628 c:\users\toman_000\desktop\cave_explorer\wall.h
 	"Sprite.h"
 
-1455572676 source:c:\users\toman_000\desktop\cave_explorer\gun.cpp
+1455596543 source:c:\users\toman_000\desktop\cave_explorer\gun.cpp
 	"Gun.h"
 	"Game.h"
 	<GL/glut.h>

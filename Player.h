@@ -14,7 +14,6 @@ public:
     ~Player(){};
 
     float x,y,trueX,trueY,w,h,speed,angle;
-    float currectSpeed[2] = {0, 0};
     bool keysDown[KEYSDOWN_SIZE] = {false, false, false, false};
     bool mouse = false;
     Gun* gun;

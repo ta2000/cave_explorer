@@ -107,9 +107,6 @@ void Player::update()
         }
     }
 
-    currectSpeed[0] = (trueX - prevX);
-    currectSpeed[1] = (trueY - prevY);
-
     // Shooting
     if (gun != nullptr)
     {
@@ -119,15 +116,13 @@ void Player::update()
         gun->x = getX()-16;
         gun->y = getY()-16;
         gun->angle = getAngle();
-        gun->velX = currectSpeed[0];
-        gun->velY = currectSpeed[1];
+        gun->velX = (trueX - prevX);
+        gun->velY = (trueY - prevY);
 
         // Shoot
         if (mouse == true && gun->cooldown <= 0)
         {
             gun->fire();
-            // Reset the cooldown
-            gun->cooldown = gun->fireRate;
         }
     }
 }
