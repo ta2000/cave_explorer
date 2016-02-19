@@ -86,6 +86,21 @@ bool Sprite::collision(Sprite* obj)
     return collided;
 }
 
+bool Sprite::pointWithinSprite(float pointX, float pointY, Sprite* obj)
+{
+    bool within = false;
+
+    if (pointX >= obj->x &&
+        pointX <= obj->x + obj->w &&
+        pointY >= obj->y &&
+        pointY <= obj->y + obj->w)
+    {
+        within = true;
+    }
+
+    return within;
+}
+
 float Sprite::distance(Sprite* obj)
 {
     float dx = abs((this->x+32/2) - (obj->x+32/2));

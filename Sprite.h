@@ -18,6 +18,7 @@ public:
     virtual void update();
     void draw();
     bool collision(Sprite* obj);
+    bool pointWithinSprite(float pointX, float pointY, Sprite* obj);
     float distance(Sprite* obj);
 private:
 };

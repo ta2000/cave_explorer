@@ -30,58 +30,77 @@ void Enemy::update()
     float prevX = getX();
     float prevY = getY();
 
+    bool directions[4] = {false, false, false, false};
+
+    // ================
+    // ATTACKING PLAYER
+    // ================
     if ( distance(game.player) < 300)
     {
         setAngle(atan2(getY() - targetY, getX() - targetX));
 
         // Move
         if ( getX() < game.player->x )
-            setX( getX() + speed );
+            directions[0] = true;
         else if ( getX() > game.player->x )
-            setX( getX() - speed );
+            directions[1] = true;
         if ( getY() < game.player->y )
-            setY( getY() + speed );
+            directions[2] = true;
         else if ( getY() > game.player->y )
-            setY( getY() - speed );
+            directions[3] = true;
 
 
         // Check collisions
         for (auto &i : game.sprites) {
-            if ( collision(i) && (i->x != x && i->y != y) ) // Only collide if wall
+            if ( distance(i)<=128 && i!=this )
             {
-                if ( getX() < i->x ) // Right
+                for (int rayAngle=0; rayAngle<360; rayAngle+=90)
                 {
-                    setX( getX() - speed*2 );
-                }
-                else if ( getX() > i->x ) // Left
-                {
-                    setX( getX() + speed*2 );
-                }
-                if ( getY() < i->y ) // Bottom
-                {
-                    setY( getY() - speed*2 );
-                }
-                else if ( getY() > i->y ) // Top
-                {
-                    setY( getY() + speed*2 );
+                    if ( pointWithinSprite(
+                            getX()+16 - cos(rayAngle*PI/180)*64,
+                            getY()+16 - sin(rayAngle*PI/180)*64,
+                            i ) )
+                    {
+                        if (rayAngle == 180)
+                            directions[0] = false;
+                        else if (rayAngle == 0)
+                            directions[1] = false;
+                        if (rayAngle == 270)
+                            directions[2] = false;
+                        else if (rayAngle == 90)
+                            directions[3] = false;
+                    }
                 }
             }
         }
 
-        // Update gun
-        gun->update();
-        // Set properties equal to this
-        gun->x = getX()-16;
-        gun->y = getY()-16;
-        gun->angle = getAngle() + PI;
-        gun->velX = getX() - prevX;
-        gun->velY = getY() - prevY;
-        // Shoot as soon as possible
-        if (gun->cooldown <= 0)
+        if (gun != nullptr)
         {
-            gun->fire();
+            // Update gun
+            gun->update();
+            // Set properties equal to this
+            gun->x = getX()-16;
+            gun->y = getY()-16;
+            gun->angle = getAngle() + PI;
+            gun->velX = getX() - prevX;
+            gun->velY = getY() - prevY;
+            // Shoot as soon as possible
+            if (gun->cooldown <= 0)
+            {
+                gun->fire();
+            }
         }
     }
 
+    // Move in current directions
+    if ( directions[0] )
+        setX( getX() + speed );
+    else if ( directions[1] )
+        setX( getX() - speed );
+    if ( directions[2] )
+        setY( getY() + speed );
+    else if ( directions[3] )
+        setY( getY() - speed );
 
 }
+
