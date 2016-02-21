@@ -19,7 +19,7 @@ public:
     // Wandering AI
     int wanderingDirection = 0;
 
-    void update();
+    bool update();
 private:
 
 };

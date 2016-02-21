@@ -9,11 +9,12 @@
 
 class Gun {
 public:
-    Gun(int, float, float);
+    Gun(int, float, float, bool);
     ~Gun(){};
 
     int fireRate, cooldown;
     float x,y,w,h, angle, damage, velocity, velX, velY;
+    bool isEnemy;
 
     void fire();
     void update();

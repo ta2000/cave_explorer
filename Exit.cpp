@@ -12,7 +12,7 @@ Exit::Exit(float x, float y) : Sprite(x, y)
     this->y = y;
 }
 
-void Exit::update()
+bool Exit::update()
 {
     game.levelNum++;
     if (collision(game.player))
@@ -30,4 +30,5 @@ void Exit::update()
         // Create a new map
         game.createMap(10);
     }
+    return true;
 }

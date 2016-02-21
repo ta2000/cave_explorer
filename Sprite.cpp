@@ -1,6 +1,7 @@
 #include "Sprite.h"
 #include "Game.h"
 #include "Exit.h"
+#include "Bullet.h"
 
 #include <GL/glut.h>
 #include <stdlib.h>
@@ -50,9 +51,19 @@ float Sprite::getAngle()
     return this->angle;
 }
 
-void Sprite::update()
+bool Sprite::update()
 {
-    // So we can call update on any sprite
+    // Delete colliding bullets
+    for (auto i = game.bullets.begin(); i != game.bullets.end();)
+    {
+        if (bulletCollision(*i))
+        {
+            delete (*i);
+            game.bullets.erase(i++);
+        }
+        ++i;
+    }
+    return true;
 }
 
 void Sprite::draw()
@@ -81,7 +92,23 @@ bool Sprite::collision(Sprite* obj)
     if (this->x < obj->x + obj->w-1 &&
 		this->x + this->w-1 > obj->x &&
 		this->y < obj->y + obj->h-1 &&
-		this->y + this->h-1 > obj->y) {
+		this->y + this->h-1 > obj->y)
+    {
+        collided = true;
+    }
+
+    return collided;
+}
+
+bool Sprite::bulletCollision(Bullet* obj)
+{
+    bool collided = false;
+
+    if (this->x-32 < obj->x + obj->radius &&
+		this->x-32 + this->w > obj->x &&
+		this->y-32 < obj->y + obj->radius &&
+		this->y-32 + this->h > obj->y)
+    {
         collided = true;
     }
 
@@ -95,7 +122,7 @@ bool Sprite::pointWithinSprite(float pointX, float pointY, Sprite* obj)
     if (pointX >= obj->x &&
         pointX <= obj->x + obj->w &&
         pointY >= obj->y &&
-        pointY <= obj->y + obj->w)
+        pointY <= obj->y + obj->h)
     {
         within = true;
     }
@@ -105,7 +132,7 @@ bool Sprite::pointWithinSprite(float pointX, float pointY, Sprite* obj)
 
 float Sprite::distance(Sprite* obj)
 {
-    float dx = abs((this->x+this->w/2) - (obj->x+obj->h/2));
+    float dx = abs((this->x+this->w/2) - (obj->x+obj->w/2));
     float dy = abs((this->y+this->h/2) - (obj->y+obj->h/2));
 	float hyp = sqrt( (dx*dx)+(dy*dy) );
 

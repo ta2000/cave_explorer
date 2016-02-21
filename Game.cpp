@@ -173,7 +173,11 @@ void Game::update()
 
     for (auto i = sprites.begin(); i != sprites.end();)
     {
-        (*i)->update();
+        if ((*i)->update() == false)
+        {
+            delete(*i);
+            sprites.erase(i);
+        }
         ++i;
     }
 

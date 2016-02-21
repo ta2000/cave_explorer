@@ -10,7 +10,7 @@ public:
 
     float x,y,w,h;
 
-    virtual void update();
+    bool update();
 private:
 };
 

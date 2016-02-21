@@ -1,6 +1,7 @@
 #include "Bullet.h"
 #include "Game.h"
 
+#include "Sprite.h"
 #include <GL/glut.h>
 #include <iostream>
 #include <math.h>
@@ -9,23 +10,31 @@
 
 extern Game game;
 
-Bullet::Bullet(float x, float y, float angle, float damage, float velocity, float velX, float velY)
+Bullet::Bullet(float x, float y, float angle, float damage, float velocity, float velX, float velY, bool isEnemy)
 {
     this->x = x;
     this->y = y;
-    this->radius = game.scale/8;
+    this->radius = game.scale/4;
 
     this->velX = velX;
     this->velY = velY;
     this->angle = angle;
     this->damage = damage;
     this->velocity = velocity;
+    this->isEnemy = isEnemy;
 }
 
-void Bullet::update()
+bool Bullet::update()
 {
     x += (cos( angle )*velocity)+velX;
     y += (sin( angle )*velocity)+velY;
+
+    bool noHit = true;
+    // Delete if off screen
+    if ( x < 0 || x > glutGet(GLUT_WINDOW_WIDTH) || (y < 0 || y > glutGet(GLUT_WINDOW_HEIGHT)))
+    {
+        noHit = false;
+    }
 }
 
 void Bullet::draw()

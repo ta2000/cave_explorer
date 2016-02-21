@@ -1,6 +1,8 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
+#include "Bullet.h"
+
 class Sprite {
 public:
     Sprite(float, float);
@@ -15,9 +17,10 @@ public:
     float getY();
     float getAngle();
 
-    virtual void update();
+    virtual bool update();
     void draw();
     bool collision(Sprite* obj);
+    bool bulletCollision(Bullet* obj);
     bool pointWithinSprite(float pointX, float pointY, Sprite* obj);
     float distance(Sprite* obj);
 private:

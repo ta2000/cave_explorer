@@ -14,12 +14,12 @@ Player::Player(float x, float y, float speed) : Sprite(x, y)
     this->y = y;
     this->trueX = x;
     this->trueY = y;
-    this->gun = (new Gun(10, 10, 6)); // ROF, DMG, VEL
+    this->gun = (new Gun(10, 10, 8, false)); // ROF, DMG, VEL
     this->angle = 0;
     this->speed = speed;
 }
 
-void Player::update()
+bool Player::update()
 {
     float prevX = trueX;
     float prevY = trueY;
@@ -123,4 +123,6 @@ void Player::update()
             gun->fire();
         }
     }
+
+    return true;
 }

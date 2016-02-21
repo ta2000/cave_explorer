@@ -18,11 +18,11 @@ Enemy::Enemy(float x, float y) : Sprite(x, y)
     this->x = x;
     this->y = y;
 
-    this->gun = new Gun(40, 2, 1);
+    this->gun = new Gun(40, 2, 1, true);
     this->speed = rand() % 2 + 2;
 }
 
-void Enemy::update()
+bool Enemy::update()
 {
     float prevX = getX();
     float prevY = getY();
@@ -142,5 +142,19 @@ void Enemy::update()
     else if ( directions[3] )
         setY( getY() - speed );
 
+
+    // Delete if not alive
+    bool alive = true;
+    for (auto i = game.bullets.begin(); i != game.bullets.end();)
+    {
+        if (bulletCollision(*i) && (*i)->isEnemy==false)
+        {
+            alive = false;
+            delete (*i);
+            game.bullets.erase(i++);
+        }
+        ++i;
+    }
+    return alive;
 }
 

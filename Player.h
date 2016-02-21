@@ -18,7 +18,7 @@ public:
     bool mouse = false;
     Gun* gun;
 
-    void update();
+    bool update();
 private:
 };
 
