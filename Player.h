@@ -19,6 +19,7 @@ public:
     Gun* gun;
 
     bool update();
+    void shoot(float, float);
 private:
 };
 

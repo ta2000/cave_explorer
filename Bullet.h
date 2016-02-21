@@ -9,7 +9,7 @@ public:
     float x,y,radius,angle,damage,velocity,velX,velY;
     bool isEnemy;
 
-    bool update();
+    void update();
     void draw();
 private:
 };

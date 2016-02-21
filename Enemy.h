@@ -20,6 +20,7 @@ public:
     int wanderingDirection = 0;
 
     bool update();
+    void shoot(float, float);
 private:
 
 };

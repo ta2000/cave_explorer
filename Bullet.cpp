@@ -14,7 +14,7 @@ Bullet::Bullet(float x, float y, float angle, float damage, float velocity, floa
 {
     this->x = x;
     this->y = y;
-    this->radius = game.scale/4;
+    this->radius = game.scale/6;
 
     this->velX = velX;
     this->velY = velY;
@@ -24,17 +24,10 @@ Bullet::Bullet(float x, float y, float angle, float damage, float velocity, floa
     this->isEnemy = isEnemy;
 }
 
-bool Bullet::update()
+void Bullet::update()
 {
     x += (cos( angle )*velocity)+velX;
     y += (sin( angle )*velocity)+velY;
-
-    bool noHit = true;
-    // Delete if off screen
-    if ( x < 0 || x > glutGet(GLUT_WINDOW_WIDTH) || (y < 0 || y > glutGet(GLUT_WINDOW_HEIGHT)))
-    {
-        noHit = false;
-    }
 }
 
 void Bullet::draw()

@@ -22,6 +22,12 @@ Enemy::Enemy(float x, float y) : Sprite(x, y)
     this->speed = rand() % 2 + 2;
 }
 
+void Enemy::shoot(float velX, float velY)
+{
+    game.bullets.push_back( new Bullet(getX()-game.scale/2, getY()-game.scale/2, getAngle()+PI, gun->damage, gun->velocity+12, velX, velY, true) );
+    gun->cooldown = gun->fireRate;
+}
+
 bool Enemy::update()
 {
     float prevX = getX();
@@ -81,16 +87,10 @@ bool Enemy::update()
         {
             // Update gun
             gun->update();
-            // Set properties equal to this
-            gun->x = getX()-(game.scale/2);
-            gun->y = getY()-(game.scale/2);
-            gun->angle = getAngle() + PI;
-            gun->velX = getX() - prevX;
-            gun->velY = getY() - prevY;
             // Shoot as soon as possible
             if (gun->cooldown <= 0)
             {
-                gun->fire();
+                shoot(getX() - prevX, getY() - prevY);
             }
         }
     }

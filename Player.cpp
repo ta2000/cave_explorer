@@ -19,6 +19,12 @@ Player::Player(float x, float y, float speed) : Sprite(x, y)
     this->speed = speed;
 }
 
+void Player::shoot(float velX, float velY)
+{
+    game.bullets.push_back( new Bullet(getX()-game.scale/2, getY()-game.scale/2, getAngle(), gun->damage, gun->velocity+12, velX, velY, false) );
+    gun->cooldown = gun->fireRate;
+}
+
 bool Player::update()
 {
     float prevX = trueX;
@@ -110,17 +116,10 @@ bool Player::update()
     {
         // Update gun
         gun->update();
-        // Set properties equal to player
-        gun->x = getX()-(game.scale/2);
-        gun->y = getY()-(game.scale/2);
-        gun->angle = getAngle();
-        gun->velX = (trueX - prevX);
-        gun->velY = (trueY - prevY);
-
         // Shoot
         if (mouse == true && gun->cooldown <= 0)
         {
-            gun->fire();
+            shoot((trueX - prevX), (trueY - prevY));
         }
     }
 
