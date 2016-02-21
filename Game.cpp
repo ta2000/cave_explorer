@@ -15,7 +15,7 @@
 
 Game::Game()
 {
-    player = new Player(336, 256, 8); // Screen width:height / 2 + (scale/2)
+    player = new Player(326, 256, 8); // Screen width:height / 2 + (scale/2)
     levelExit = new Exit(0, 0);
 
     createMap(10);
@@ -70,6 +70,15 @@ void Game::createMap(int numRooms)
             for (unsigned int j=room_x; j<(room_x + (room_width-1)); j++)
             {
                 gameMap[i][j] = ' ';
+
+                // Add enemies to rooms, not including room 0 (player spawn)
+                if (rooms != 0)
+                {
+                    if (gameMap[i][j] == ' ' && rand() % 20 == 0) // Frequency of enemies
+                    {
+                        gameMap[i][j] = 'm';
+                    }
+                }
             }
         }
     }
@@ -107,21 +116,6 @@ void Game::createMap(int numRooms)
         }
     }
 
-
-    // ==============
-    // CREATE ENEMIES
-    // ==============
-    for (unsigned int i=0; i<sizeof(gameMap)/sizeof(gameMap[0]); i++)
-    {
-        for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
-        {
-            if (gameMap[i][j] == ' ' && rand() % 100 == 0) // Frequency of enemies
-            {
-                gameMap[i][j] = 'm';
-            }
-        }
-    }
-
     // Add the player in the first room
     gameMap[caveCoords[0][0]+1][caveCoords[0][1]+1] = 'p'; // Place the player 1 tile down and to the right of the first room
 
@@ -142,22 +136,22 @@ void Game::createMap(int numRooms)
             std::cout << (gameMap[i][j]) << " ";
             if (gameMap[i][j] == 'x')
             {
-                addWall(j*32, i*32);
+                addWall(j*scale, i*scale);
             }
             else if (gameMap[i][j] == 'm')
             {
-                addEnemy(j*32, i*32);
+                addEnemy(j*scale, i*scale);
             }
             else if (gameMap[i][j] == 'e')
             {
-                levelExit->setX(j*32);
-                levelExit->setY(i*32);
+                levelExit->setX(j*scale);
+                levelExit->setY(i*scale);
             }
             else if (gameMap[i][j] == 'p')
             {
                 // Set the view on the player
-                difX = j*32 - player->x;
-                difY = i*32 - player->y;
+                difX = j*scale - player->x;
+                difY = i*scale - player->y;
             }
 
         }

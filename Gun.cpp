@@ -10,7 +10,7 @@ extern Game game;
 Gun::Gun(int fireRate, float damage, float velocity)
 {
     this->fireRate = fireRate;
-    this->cooldown = 0;
+    this->cooldown = rand() % 50;
     this->damage = damage;
     this->velocity = velocity;
 }
@@ -25,6 +25,6 @@ void Gun::update()
 
 void Gun::fire()
 {
-    game.bullets.push_back( new Bullet(x, y, angle, damage, velocity+16, velX, velY) );
+    game.bullets.push_back( new Bullet(x, y, angle, damage, velocity+(game.scale/2), velX, velY) );
     cooldown = fireRate;
 }

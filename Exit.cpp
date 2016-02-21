@@ -10,12 +10,11 @@ Exit::Exit(float x, float y) : Sprite(x, y)
 {
     this->x = x;
     this->y = y;
-    this->w = 32;
-    this->h = 32;
 }
 
 void Exit::update()
 {
+    game.levelNum++;
     if (collision(game.player))
     {
         // Delete all objects in sprites vector

@@ -18,7 +18,7 @@ Enemy::Enemy(float x, float y) : Sprite(x, y)
     this->x = x;
     this->y = y;
 
-    this->gun = new Gun(20, 2, 1);
+    this->gun = new Gun(40, 2, 1);
     this->speed = rand() % 2 + 2;
 }
 
@@ -82,8 +82,8 @@ void Enemy::update()
             // Update gun
             gun->update();
             // Set properties equal to this
-            gun->x = getX()-16;
-            gun->y = getY()-16;
+            gun->x = getX()-(game.scale/2);
+            gun->y = getY()-(game.scale/2);
             gun->angle = getAngle() + PI;
             gun->velX = getX() - prevX;
             gun->velY = getY() - prevY;
@@ -112,8 +112,8 @@ void Enemy::update()
             {
 
                 if ( pointWithinSprite(
-                    getX()+16 - cos(rayAngle*PI/180)*32,
-                    getY()+16 - sin(rayAngle*PI/180)*32,
+                    getX()+(game.scale/2) - cos(rayAngle*PI/180)*game.scale,
+                    getY()+(game.scale/2) - sin(rayAngle*PI/180)*game.scale,
                     i ) || collision(i) )
                 {
                     if (rayAngle == 180)

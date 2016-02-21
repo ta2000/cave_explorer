@@ -7,11 +7,13 @@
 
 #define PI 3.14159265359
 
+extern Game game;
+
 Bullet::Bullet(float x, float y, float angle, float damage, float velocity, float velX, float velY)
 {
     this->x = x;
     this->y = y;
-    this->radius = 4;
+    this->radius = game.scale/8;
 
     this->velX = velX;
     this->velY = velY;

@@ -9,12 +9,14 @@
 
 #define PI 3.14159265359
 
+extern Game game;
+
 Sprite::Sprite(float x, float y)
 {
     this->x = x;
     this->y = y;
-    this->w = 32;
-    this->h = 32;
+    this->w = game.scale;
+    this->h = game.scale;
     this->angle = 0.0; // Normal
 }
 
@@ -57,9 +59,9 @@ void Sprite::draw()
 {
     glPushMatrix();
 
-        glTranslatef(x-16, y-16, 0.0f);
+        glTranslatef(x-(game.scale/2), y-(game.scale/2), 0.0f);
         glRotatef(angle*180/PI, 0.0f, 0.0f, 1.0f);
-        glTranslatef(-x-16, -y-16, 0.0f);
+        glTranslatef(-x-(game.scale/2), -y-(game.scale/2), 0.0f);
 
         glBegin(GL_QUADS);
         glNormal3f(0.0f, 1.0f, 0.0f);
@@ -76,10 +78,10 @@ bool Sprite::collision(Sprite* obj)
 {
     bool collided = false;
 
-    if (this->x < obj->x + 31 &&
-		this->x + 31 > obj->x &&
-		this->y < obj->y + 31 &&
-		31 + this->y > obj->y) {
+    if (this->x < obj->x + obj->w-1 &&
+		this->x + this->w-1 > obj->x &&
+		this->y < obj->y + obj->h-1 &&
+		this->y + this->h-1 > obj->y) {
         collided = true;
     }
 
@@ -103,8 +105,8 @@ bool Sprite::pointWithinSprite(float pointX, float pointY, Sprite* obj)
 
 float Sprite::distance(Sprite* obj)
 {
-    float dx = abs((this->x+32/2) - (obj->x+32/2));
-    float dy = abs((this->y+32/2) - (obj->y+32/2));
+    float dx = abs((this->x+this->w/2) - (obj->x+obj->h/2));
+    float dy = abs((this->y+this->h/2) - (obj->y+obj->h/2));
 	float hyp = sqrt( (dx*dx)+(dy*dy) );
 
 	return hyp;

@@ -13,6 +13,8 @@ public:
     Game();
     ~Game(){};
 
+    int levelNum = 1;
+    int scale = 32;
     Player* player;
     Exit* levelExit;
     std::list<Sprite*> sprites;
