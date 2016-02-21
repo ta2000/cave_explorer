@@ -16,8 +16,8 @@ Bullet::Bullet(float x, float y, float angle, float damage, float velocity, floa
     this->y = y;
     this->radius = game.scale/6;
 
-    this->velX = velX;
-    this->velY = velY;
+    this->velX = velX/2;
+    this->velY = velY/2;
     this->angle = angle;
     this->damage = damage;
     this->velocity = velocity;
@@ -32,7 +32,8 @@ void Bullet::update()
 
 void Bullet::draw()
 {
-	int triangleAmount = 20; //# of triangles used to draw circle
+    glColor3f(0.3f, 0.3f, 1.0f);
+	int triangleAmount = 10; //# of triangles used to draw circle
 
 	//GLfloat radius = 0.8f; //radius
 	GLfloat twicePi = 2.0f * PI;
@@ -45,5 +46,21 @@ void Bullet::draw()
 			    y + (radius * sin(i * twicePi / triangleAmount))
 			);
 		}
+	glEnd();
+
+
+    glLineWidth(3);
+    glColor3f(0.1f, 0.1f, 1.0f);
+	glBegin(GL_LINE_LOOP);
+	for(int i = 0; i < triangleAmount; i++)
+	{
+		float theta = 2.0f * 3.1415926f * float(i) / float(triangleAmount);//get the current angle
+
+		float cx = radius * cosf(theta);//calculate the x component
+		float cy = radius * sinf(theta);//calculate the y component
+
+		glVertex2f(x + cx, y + cy);//output vertex
+
+	}
 	glEnd();
 }

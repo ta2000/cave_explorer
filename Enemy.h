@@ -19,6 +19,7 @@ public:
     // Wandering AI
     int wanderingDirection = 0;
 
+    void draw();
     bool update();
     void shoot(float, float);
 private:

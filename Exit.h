@@ -10,6 +10,7 @@ public:
 
     float x,y,w,h;
 
+    void draw();
     bool update();
 private:
 };

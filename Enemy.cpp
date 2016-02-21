@@ -18,7 +18,7 @@ Enemy::Enemy(float x, float y) : Sprite(x, y)
     this->x = x;
     this->y = y;
 
-    this->gun = new Gun(40, 2, 1, true);
+    this->gun = new Gun(40, 2, 4, true);
     this->speed = rand() % 2 + 2;
 }
 
@@ -26,6 +26,12 @@ void Enemy::shoot(float velX, float velY)
 {
     game.bullets.push_back( new Bullet(getX()-game.scale/2, getY()-game.scale/2, getAngle()+PI, gun->damage, gun->velocity+12, velX, velY, true) );
     gun->cooldown = gun->fireRate;
+}
+
+void Enemy::draw()
+{
+    glColor3f(0.4f, 0.0f, 0.0f);
+    Sprite::draw();
 }
 
 bool Enemy::update()

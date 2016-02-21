@@ -15,7 +15,7 @@
 
 Game::Game()
 {
-    player = new Player(326, 256, 8); // Screen width:height / 2 + (scale/2)
+    player = new Player(320 + scale/2, 240 + scale/2, 100, 10); // Screen width:height / 2 + (scale/2)
     levelExit = new Exit(0, 0);
 
     createMap(10);
@@ -200,20 +200,23 @@ void Game::update()
 // Draw all objects in the sprites vector
 void Game::draw()
 {
-    player->draw();
-    levelExit->draw();
-
-    for (auto &i : sprites) {
-        if (i->distance(player) < glutGet(GLUT_WINDOW_WIDTH))
-        {
-            i->draw();
-        }
-    }
-
     for (auto &i : bullets)
     {
         i->draw();
     }
+
+    for (auto i = sprites.begin(); i != sprites.end();)
+    {
+        if ((*i)->distance(player) < glutGet(GLUT_WINDOW_WIDTH))
+        {
+            (*i)->draw();
+            glColor3f(0.3f, 0.1f, 0.0f);
+        }
+        ++i;
+    }
+
+    levelExit->draw();
+    player->draw();
 }
 
 // Add a new enemy object to the array of sprites

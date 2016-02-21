@@ -12,6 +12,12 @@ Exit::Exit(float x, float y) : Sprite(x, y)
     this->y = y;
 }
 
+void Exit::draw()
+{
+    glColor3f(0.6f, 0.0f, 0.8f);
+    Sprite::draw();
+}
+
 bool Exit::update()
 {
     game.levelNum++;
@@ -26,6 +32,13 @@ bool Exit::update()
         }
         // Clear sprites
         game.sprites.clear(); // We still have a pointer to the level exit stored in game
+
+        // Delete all bullets on screen
+        for (auto &i : game.bullets)
+        {
+            delete i;
+        }
+        game.bullets.clear();
 
         // Create a new map
         game.createMap(10);

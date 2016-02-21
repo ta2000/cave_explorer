@@ -10,14 +10,15 @@
 
 class Player : public Sprite {
 public:
-    Player(float, float, float);
+    Player(float, float, float, float);
     ~Player(){};
 
-    float x,y,trueX,trueY,w,h,speed,angle;
+    float x,y,trueX,trueY,w,h,speed,angle,hp,maxHp;
     bool keysDown[KEYSDOWN_SIZE] = {false, false, false, false};
     bool mouse = false;
     Gun* gun;
 
+    void draw();
     bool update();
     void shoot(float, float);
 private:

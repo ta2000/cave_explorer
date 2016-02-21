@@ -104,10 +104,10 @@ bool Sprite::bulletCollision(Bullet* obj)
 {
     bool collided = false;
 
-    if (this->x-32 < obj->x + obj->radius &&
-		this->x-32 + this->w > obj->x &&
-		this->y-32 < obj->y + obj->radius &&
-		this->y-32 + this->h > obj->y)
+    if (this->x-this->w < obj->x + obj->radius &&
+		this->x > obj->x &&
+		this->y-this->h < obj->y + obj->radius &&
+		this->y > obj->y)
     {
         collided = true;
     }

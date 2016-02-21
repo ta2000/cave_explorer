@@ -18,7 +18,7 @@ public:
     float getAngle();
 
     virtual bool update();
-    void draw();
+    virtual void draw();
     bool collision(Sprite* obj);
     bool bulletCollision(Bullet* obj);
     bool pointWithinSprite(float pointX, float pointY, Sprite* obj);
