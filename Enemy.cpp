@@ -7,6 +7,7 @@
 #include <GL/glut.h>
 #include <iostream>
 #include <math.h>
+#include <algorithm>
 
 #define PI 3.14159265359
 
@@ -18,11 +19,7 @@ Enemy::Enemy(float x, float y) : Sprite(x, y)
     this->y = y;
 
     this->gun = new Gun(20, 2, 1);
-
-    this->targetX = game.player->x;
-    this->targetY = game.player->y;
-    this->angle = 0.0;
-    this->speed = 2;
+    this->speed = rand() % 2 + 2;
 }
 
 void Enemy::update()
@@ -31,49 +28,55 @@ void Enemy::update()
     float prevY = getY();
 
     bool directions[4] = {false, false, false, false};
+    bool wandering = false;
 
     // ================
     // ATTACKING PLAYER
     // ================
-    if ( distance(game.player) < 300)
+    if ( distance(game.player) < 400 )
     {
-        setAngle(atan2(getY() - targetY, getX() - targetX));
-
-        // Move
-        if ( getX() < game.player->x )
-            directions[0] = true;
-        else if ( getX() > game.player->x )
-            directions[1] = true;
-        if ( getY() < game.player->y )
-            directions[2] = true;
-        else if ( getY() > game.player->y )
-            directions[3] = true;
-
-
-        // Check collisions
-        for (auto &i : game.sprites) {
-            if ( distance(i)<=128 && i!=this )
-            {
-                for (int rayAngle=0; rayAngle<360; rayAngle+=90)
-                {
-                    if ( pointWithinSprite(
-                            getX()+16 - cos(rayAngle*PI/180)*64,
-                            getY()+16 - sin(rayAngle*PI/180)*64,
-                            i ) )
-                    {
-                        if (rayAngle == 180)
-                            directions[0] = false;
-                        else if (rayAngle == 0)
-                            directions[1] = false;
-                        if (rayAngle == 270)
-                            directions[2] = false;
-                        else if (rayAngle == 90)
-                            directions[3] = false;
-                    }
-                }
-            }
+        targetX = game.player->x;
+        targetY = game.player->y;
+        // Decrement counter each frame
+        attackMovementCounter--;
+        // Prevent counter from being below 0
+        if (attackMovementCounter < 0)
+            attackMovementCounter = 0;
+        // Randomize directions if counter = 0
+        if (attackMovementCounter == 0)
+        {
+            shuffle(std::begin(mixedDirections), std::end(mixedDirections), std::default_random_engine(rand()));
+            attackMovementCounter = rand() % 30 + 10;
         }
 
+        if ( distance(game.player) > 200)
+        {
+           if ( getX() < targetX )
+            directions[0] = true;
+            else if ( getX() > targetX )
+                directions[1] = true;
+            if ( getY() < targetY )
+                directions[2] = true;
+            else if ( getY() > targetY )
+                directions[3] = true;
+        }
+        else
+        {
+            // Move around player randomly
+            if ( getX() < targetX )
+                directions[mixedDirections[0]] = true;
+            else if ( getX() > targetX )
+                directions[mixedDirections[1]] = true;
+            if ( getY() < targetY )
+                directions[mixedDirections[2]] = true;
+            else if ( getY() > targetY )
+                directions[mixedDirections[3]] = true;
+        }
+
+        // Face towards target
+        setAngle(atan2(getY() - targetY, getX() - targetX));
+
+        // Fire gun if armed
         if (gun != nullptr)
         {
             // Update gun
@@ -88,6 +91,43 @@ void Enemy::update()
             if (gun->cooldown <= 0)
             {
                 gun->fire();
+            }
+        }
+    }
+    // =========
+    // WANDERING
+    // =========
+    else
+    {
+        wandering = true;
+
+        directions[wanderingDirections[0]] = true;
+    }
+
+    // Check collisions
+    for (auto &i : game.sprites) {
+        if ( distance(i)<=128 && i!=this && (dynamic_cast<Wall*>(i)!=NULL) )
+        {
+            for (int rayAngle=0; rayAngle<360; rayAngle+=90)
+            {
+
+                if ( pointWithinSprite(
+                    getX()+16 - cos(rayAngle*PI/180)*32,
+                    getY()+16 - sin(rayAngle*PI/180)*32,
+                    i ) || collision(i) )
+                {
+                    if (rayAngle == 180)
+                        directions[0] = false;
+                    else if (rayAngle == 0)
+                        directions[1] = false;
+                    if (rayAngle == 270)
+                        directions[2] = false;
+                    else if (rayAngle == 90)
+                        directions[3] = false;
+                    if (wandering)
+                        shuffle(std::begin(wanderingDirections), std::end(wanderingDirections), std::default_random_engine(rand()));
+                }
+
             }
         }
     }

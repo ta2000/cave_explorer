@@ -115,7 +115,7 @@ void Game::createMap(int numRooms)
     {
         for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
         {
-            if (gameMap[i][j] == ' ' && rand() % 50 == 0) // Frequency of enemies
+            if (gameMap[i][j] == ' ' && rand() % 100 == 0) // Frequency of enemies
             {
                 gameMap[i][j] = 'm';
             }

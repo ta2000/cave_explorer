@@ -12,6 +12,13 @@ public:
     float x,y,w,h,angle,speed,targetX,targetY;
     Gun* gun;
 
+    // Attacking AI
+    int attackMovement = 0;
+    int attackMovementCounter = 1;
+    int mixedDirections[4] = {0,1,2,3};
+    // Wandering AI
+    int wanderingDirections[4] = {0,1,2,3};
+
     void update();
 private:
 
