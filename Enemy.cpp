@@ -101,7 +101,7 @@ void Enemy::update()
     {
         wandering = true;
 
-        directions[wanderingDirections[0]] = true;
+        directions[wanderingDirection] = true;
     }
 
     // Check collisions
@@ -125,7 +125,7 @@ void Enemy::update()
                     else if (rayAngle == 90)
                         directions[3] = false;
                     if (wandering)
-                        shuffle(std::begin(wanderingDirections), std::end(wanderingDirections), std::default_random_engine(rand()));
+                        wanderingDirection = rand() % 4;
                 }
 
             }

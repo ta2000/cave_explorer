@@ -17,7 +17,7 @@ public:
     int attackMovementCounter = 1;
     int mixedDirections[4] = {0,1,2,3};
     // Wandering AI
-    int wanderingDirections[4] = {0,1,2,3};
+    int wanderingDirection = 0;
 
     void update();
 private:
