@@ -29,8 +29,9 @@ public:
     void mouseMove(int x, int y);
     void createMap(int numRooms);
 private:
-    void addEnemy(float, float);
     void addWall(float, float);
+    void addEnemy(float, float);
+    void addHealth(float, float);
 };
 
 #endif

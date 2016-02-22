@@ -18,6 +18,7 @@ public:
 
     void fire();
     void update();
+    void setRandomStats(int modifier);
 private:
 };
 

@@ -5,6 +5,7 @@
 #include "Enemy.h"
 #include "Wall.h"
 #include "Exit.h"
+#include "Health.h"
 
 #include <GL/glut.h>
 #include <iostream>
@@ -71,12 +72,18 @@ void Game::createMap(int numRooms)
             {
                 gameMap[i][j] = ' ';
 
-                // Add enemies to rooms, not including room 0 (player spawn)
+                // Add enemies and items to rooms, not including room 0 (player spawn)
                 if (rooms != 0)
                 {
+                    // Enemy
                     if (gameMap[i][j] == ' ' && rand() % 20 == 0) // Frequency of enemies
                     {
                         gameMap[i][j] = 'm';
+                    }
+                    // Health pack
+                    else if (gameMap[i][j] == ' ' && rand() % 100 == 1)
+                    {
+                        gameMap[i][j] = 'h';
                     }
                 }
             }
@@ -141,6 +148,10 @@ void Game::createMap(int numRooms)
             else if (gameMap[i][j] == 'm')
             {
                 addEnemy(j*scale, i*scale);
+            }
+            else if (gameMap[i][j] == 'h')
+            {
+                addHealth(j*scale, i*scale);
             }
             else if (gameMap[i][j] == 'e')
             {
@@ -219,15 +230,20 @@ void Game::draw()
     player->draw();
 }
 
+// Add a new wall object to the array of sprites
+void Game::addWall(float x, float y)
+{
+    sprites.push_back(new Wall(x, y));
+}
 // Add a new enemy object to the array of sprites
 void Game::addEnemy(float x, float y)
 {
     sprites.push_back(new Enemy(x, y));
 }
-// Add a new wall object to the array of sprites
-void Game::addWall(float x, float y)
+// Add a new health object to the array of sprites
+void Game::addHealth(float x, float y)
 {
-    sprites.push_back(new Wall(x, y));
+    sprites.push_back(new Health(x, y));
 }
 
 // Move the player based on keyboard input

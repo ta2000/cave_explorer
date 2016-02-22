@@ -18,7 +18,8 @@ Enemy::Enemy(float x, float y) : Sprite(x, y)
     this->x = x;
     this->y = y;
 
-    this->gun = new Gun(40, 2, 4, true);
+    this->gun = new Gun(1,1,1,true);
+    this->gun->setRandomStats(game.levelNum);
     this->speed = rand() % 2 + 2;
 }
 
