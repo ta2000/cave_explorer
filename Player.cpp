@@ -5,6 +5,7 @@
 
 #include <GL/glut.h>
 #include <iostream>
+#include <sstream>
 
 Game game;
 
@@ -33,6 +34,10 @@ void Player::draw()
     Sprite::draw();
     // Draw health bar
     glPushMatrix();
+        // Create string with levelNum inside using oss
+        std::ostringstream levelString;
+        levelString << "Level: " << game.levelNum;
+        drawText(maxHp+40, 32, levelString.str());
         // Border
         glColor3f(0.0f, 0.0f, 0.0f);
         glBegin(GL_QUADS);

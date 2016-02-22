@@ -138,3 +138,13 @@ float Sprite::distance(Sprite* obj)
 
 	return hyp;
 }
+
+void Sprite::drawText(float x, float y, std::string text)
+{
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glRasterPos2i(x, y);
+
+    for (unsigned int i=0; i<text.size(); i++) {
+         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, text[i]);
+    }
+}

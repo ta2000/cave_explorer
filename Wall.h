@@ -9,6 +9,8 @@ public:
     ~Wall(){};
 
     float x,y,w,h;
+
+    void draw();
 private:
 
 };

@@ -20,9 +20,9 @@ void Exit::draw()
 
 bool Exit::update()
 {
-    game.levelNum++;
     if (collision(game.player))
     {
+        game.levelNum++;
         // Delete all objects in sprites vector
         for (auto &i : game.sprites)
         {

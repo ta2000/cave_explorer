@@ -2,6 +2,7 @@
 #define SPRITE_H
 
 #include "Bullet.h"
+#include <iostream>
 
 class Sprite {
 public:
@@ -19,6 +20,7 @@ public:
 
     virtual bool update();
     virtual void draw();
+    void drawText(float x, float y, std::string text);
     bool collision(Sprite* obj);
     bool bulletCollision(Bullet* obj);
     bool pointWithinSprite(float pointX, float pointY, Sprite* obj);
