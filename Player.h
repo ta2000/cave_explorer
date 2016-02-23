@@ -4,17 +4,13 @@
 #include "Sprite.h"
 #include "Gun.h"
 
-#ifndef KEYSDOWN_SIZE
-#define KEYSDOWN_SIZE 4
-#endif
-
 class Player : public Sprite {
 public:
     Player(float, float, float, float);
     ~Player(){};
 
     float x,y,trueX,trueY,w,h,speed,angle,hp,maxHp;
-    bool keysDown[KEYSDOWN_SIZE] = {false, false, false, false};
+    bool keysDown[5] = {false, false, false, false, false}; // W,A,S,D,E
     bool mouse = false;
     Gun* gun;
 

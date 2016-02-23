@@ -15,7 +15,7 @@ Player::Player(float x, float y, float hp, float speed) : Sprite(x, y)
     this->y = y;
     this->trueX = x;
     this->trueY = y;
-    this->gun = (new Gun(10, 10, 16, false)); // ROF, DMG, VEL
+    this->gun = (new Gun(40, 10, 1, false)); // ROF, DMG, VEL
     this->angle = 0;
     this->hp = hp;
     this->maxHp = hp;

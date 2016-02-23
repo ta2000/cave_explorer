@@ -80,11 +80,6 @@ void Game::createMap(int numRooms)
                     {
                         gameMap[i][j] = 'm';
                     }
-                    // Health pack
-                    else if (gameMap[i][j] == ' ' && rand() % 100 == 1)
-                    {
-                        gameMap[i][j] = 'h';
-                    }
                 }
             }
         }
@@ -148,10 +143,6 @@ void Game::createMap(int numRooms)
             else if (gameMap[i][j] == 'm')
             {
                 addEnemy(j*scale, i*scale);
-            }
-            else if (gameMap[i][j] == 'h')
-            {
-                addHealth(j*scale, i*scale);
             }
             else if (gameMap[i][j] == 'e')
             {
@@ -240,11 +231,6 @@ void Game::addEnemy(float x, float y)
 {
     sprites.push_back(new Enemy(x, y));
 }
-// Add a new health object to the array of sprites
-void Game::addHealth(float x, float y)
-{
-    sprites.push_back(new Health(x, y));
-}
 
 // Move the player based on keyboard input
 void Game::keyPress(unsigned char key)
@@ -262,6 +248,9 @@ void Game::keyPress(unsigned char key)
         case 'd':
             player->keysDown[3] = true;
             break;
+        case 'e':
+            player->keysDown[4] = true;
+            break;
         case 27: // Escape
             exit(0);
             break;
@@ -272,20 +261,23 @@ void Game::keyPress(unsigned char key)
 void Game::keyRelease(unsigned char key)
 {
     switch(key) {
-       case 'w':
+        case 'w':
             player->keysDown[0] = false;
             break;
-       case 'a':
+        case 'a':
             player->keysDown[1] = false;
             break;
-       case 's':
+        case 's':
             player->keysDown[2] = false;
-           break;
-       case 'd':
+            break;
+        case 'd':
             player->keysDown[3] = false;
-           break;
-   }
-   glutPostRedisplay();
+            break;
+        case 'e':
+            player->keysDown[4] = false;
+            break;
+    }
+    glutPostRedisplay();
 }
 
 void Game::mouseDown(int button, int state, int x, int y)

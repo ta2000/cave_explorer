@@ -3,6 +3,8 @@
 
 #include "Wall.h"
 #include "Gun.h"
+#include "Health.h"
+#include "GunItem.h"
 
 #include <GL/glut.h>
 #include <iostream>
@@ -156,7 +158,27 @@ bool Enemy::update()
     {
         if (bulletCollision(*i) && (*i)->isEnemy==false)
         {
+            // Drop health
+            if (rand() % 5 == 0)
+            {
+                game.sprites.push_back(new Health(getX(), getY()));
+            }
+            else
+            {
+                if (rand() % 15 == 0)
+                {
+                    // Create gun item with pointer to this enemy's gun
+                    game.sprites.push_back(new GunItem(getX(), getY(), gun));
+                }
+                else
+                {
+                    // Delete gun if it wasn't dropped
+                    delete gun;
+                }
+            }
+            // Flag for deletion
             alive = false;
+            // Delete colliding bullet
             delete (*i);
             game.bullets.erase(i++);
         }

@@ -31,7 +31,6 @@ public:
 private:
     void addWall(float, float);
     void addEnemy(float, float);
-    void addHealth(float, float);
 };
 
 #endif

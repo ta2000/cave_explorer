@@ -18,7 +18,7 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1456108247 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
+1456189242 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
 	"Game.h"
 	"Sprite.h"
 	"Player.h"
@@ -32,7 +32,7 @@
 	<math.h>
 	<time.h>
 
-1456107881 c:\users\toman_000\desktop\cave_explorer\game.h
+1456185148 c:\users\toman_000\desktop\cave_explorer\game.h
 	<vector>
 	<list>
 	"Sprite.h"
@@ -45,7 +45,7 @@
 	<GL/glut.h>
 	<stdlib.h>
 
-1456106314 source:c:\users\toman_000\desktop\cave_explorer\sprite.cpp
+1456185089 source:c:\users\toman_000\desktop\cave_explorer\sprite.cpp
 	"Sprite.h"
 	"Game.h"
 	"Exit.h"
@@ -55,15 +55,15 @@
 	<math.h>
 	<iostream>
 
-1456106318 c:\users\toman_000\desktop\cave_explorer\sprite.h
+1456185089 c:\users\toman_000\desktop\cave_explorer\sprite.h
 	"Bullet.h"
 	<iostream>
 
-1456074337 c:\users\toman_000\desktop\cave_explorer\player.h
+1456189281 c:\users\toman_000\desktop\cave_explorer\player.h
 	"Sprite.h"
 	"Gun.h"
 
-1456106951 source:c:\users\toman_000\desktop\cave_explorer\player.cpp
+1456192581 source:c:\users\toman_000\desktop\cave_explorer\player.cpp
 	"Player.h"
 	"Game.h"
 	"Wall.h"
@@ -72,11 +72,13 @@
 	<iostream>
 	<sstream>
 
-1456109922 source:c:\users\toman_000\desktop\cave_explorer\enemy.cpp
+1456192507 source:c:\users\toman_000\desktop\cave_explorer\enemy.cpp
 	"Enemy.h"
 	"Game.h"
 	"Wall.h"
 	"Gun.h"
+	"Health.h"
+	"GunItem.h"
 	<GL/glut.h>
 	<iostream>
 	<math.h>
@@ -104,7 +106,7 @@
 1456108716 c:\users\toman_000\desktop\cave_explorer\gun.h
 	"Sprite.h"
 
-1456106802 source:c:\users\toman_000\desktop\cave_explorer\exit.cpp
+1456183412 source:c:\users\toman_000\desktop\cave_explorer\exit.cpp
 	"Exit.h"
 	"Game.h"
 	<GL/glut.h>
@@ -123,12 +125,23 @@
 
 1456037638 c:\users\toman_000\desktop\cave_explorer\bullet.h
 
-1456109682 source:c:\users\toman_000\desktop\cave_explorer\health.cpp
+1456185089 source:c:\users\toman_000\desktop\cave_explorer\health.cpp
 	"Health.h"
 	"Game.h"
 	<GL/glut.h>
 	<iostream>
 
-1456107589 c:\users\toman_000\desktop\cave_explorer\health.h
+1456183412 c:\users\toman_000\desktop\cave_explorer\health.h
 	"Sprite.h"
+
+1456191284 source:c:\users\toman_000\desktop\cave_explorer\gunitem.cpp
+	"GunItem.h"
+	"Game.h"
+	<GL/glut.h>
+	<iostream>
+	<sstream>
+
+1456190160 c:\users\toman_000\desktop\cave_explorer\gunitem.h
+	"Sprite.h"
+	"Gun.h"
 
