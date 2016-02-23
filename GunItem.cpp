@@ -59,6 +59,12 @@ void GunItem::draw()
 bool GunItem::update()
 {
     bool unused = true;
+    // Flag for deletion and free memory if player moves to next level
+    if (game.player->collision(game.levelExit))
+    {
+        unused = false;
+        delete gun;
+    }
     if (distance(game.player) < game.scale*2)
     {
         // Take gun if player presses e

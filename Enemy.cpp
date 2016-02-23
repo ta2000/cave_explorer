@@ -159,7 +159,7 @@ bool Enemy::update()
         if (bulletCollision(*i) && (*i)->isEnemy==false)
         {
             // Drop health
-            if (rand() % 5 == 0)
+            if (rand() % 6 == 0)
             {
                 game.sprites.push_back(new Health(getX(), getY()));
             }
