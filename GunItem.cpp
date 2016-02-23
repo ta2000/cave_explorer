@@ -23,15 +23,33 @@ void GunItem::draw()
     {
         std::ostringstream stat;
 
-        stat << "ROF: " << (gun->fireRate);
+        // Firerate
+        stat << "Fire rate: ";
+        if ((game.player->gun->fireRate - gun->fireRate) > 0)
+            glColor3f(0.0f, 1.0f, 0.0f);
+        else
+            glColor3f(1.0f, 0.0f, 0.0f);
+        stat << (50 - gun->fireRate);
         drawText(getX(), getY()+(game.scale/2), stat.str());
         stat.str(""); stat.clear();
 
-        stat << "Damage: " << (gun->damage) << std::endl;
+        // Damage
+        stat << "Damage: ";
+        if ((gun->damage - game.player->gun->damage) > 0)
+            glColor3f(0.0f, 1.0f, 0.0f);
+        else
+            glColor3f(1.0f, 0.0f, 0.0f);
+        stat << (gun->damage);
         drawText(getX(), getY()+2*(game.scale/2), stat.str());
         stat.str(""); stat.clear();
 
-        stat << "Velocity: " << (gun->velocity);
+        // Velocity
+        stat << "Velocity: ";
+        if ((gun->velocity - game.player->gun->velocity) > 0)
+            glColor3f(0.0f, 1.0f, 0.0f);
+        else
+            glColor3f(1.0f, 0.0f, 0.0f);
+        stat << (gun->velocity);
         drawText(getX(), getY()+3*(game.scale/2), stat.str());
         stat.str(""); stat.clear();
 

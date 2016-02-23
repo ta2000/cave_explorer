@@ -37,6 +37,7 @@ void Player::draw()
         // Create string with levelNum inside using oss
         std::ostringstream levelString;
         levelString << "Level: " << game.levelNum;
+        glColor3f(1.0f, 0.0f, 0.0f);
         drawText(maxHp+40, 32, levelString.str());
         // Border
         glColor3f(0.0f, 0.0f, 0.0f);

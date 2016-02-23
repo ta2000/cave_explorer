@@ -165,7 +165,7 @@ bool Enemy::update()
             }
             else
             {
-                if (rand() % 15 == 0)
+                if (rand() % 1 == 0)
                 {
                     // Create gun item with pointer to this enemy's gun
                     game.sprites.push_back(new GunItem(getX(), getY(), gun));
