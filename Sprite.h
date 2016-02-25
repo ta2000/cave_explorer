@@ -11,9 +11,13 @@ public:
 
     float x,y,w,h,angle;
 
+    void setW(float value);
+    void setH(float value);
     void setX(float value);
     void setY(float value);
     void setAngle(float value);
+    float getW();
+    float getH();
     float getX();
     float getY();
     float getAngle();

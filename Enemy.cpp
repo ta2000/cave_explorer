@@ -159,13 +159,13 @@ bool Enemy::update()
         if (bulletCollision(*i) && (*i)->isEnemy==false)
         {
             // Drop health
-            if (rand() % 6 == 0)
+            if (rand() % 8 == 0)
             {
                 game.sprites.push_back(new Health(getX(), getY()));
             }
             else
             {
-                if (rand() % 1 == 0)
+                if (rand() % 12 == 0)
                 {
                     // Create gun item with pointer to this enemy's gun
                     game.sprites.push_back(new GunItem(getX(), getY(), gun));

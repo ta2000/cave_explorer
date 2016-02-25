@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Boss.h"
 #include "Wall.h"
 #include "Exit.h"
 #include "Health.h"
@@ -76,7 +77,7 @@ void Game::createMap(int numRooms)
                 if (rooms != 0)
                 {
                     // Enemy
-                    if (gameMap[i][j] == ' ' && rand() % 20 == 0) // Frequency of enemies
+                    if (gameMap[i][j] == ' ' && rand() % 50 == 0) // Frequency of enemies
                     {
                         gameMap[i][j] = 'm';
                     }
@@ -148,6 +149,11 @@ void Game::createMap(int numRooms)
             {
                 levelExit->setX(j*scale);
                 levelExit->setY(i*scale);
+                // Add the boss to guard the exit if level is a multiple of 10
+                if (levelNum % 10 == 0)
+                {
+                    sprites.push_back(new Boss(j*scale, i*scale));
+                }
             }
             else if (gameMap[i][j] == 'p')
             {
@@ -157,7 +163,7 @@ void Game::createMap(int numRooms)
             }
 
         }
-        std::cout << std::endl;
+        //std::cout << std::endl;
     }
 
     // Center the view on the player by moving all other objects
@@ -207,9 +213,11 @@ void Game::draw()
         i->draw();
     }
 
+    levelExit->draw();
+
     for (auto i = sprites.begin(); i != sprites.end();)
     {
-        if ((*i)->distance(player) < glutGet(GLUT_WINDOW_WIDTH))
+        if ((*i)->distance(player) < glutGet(GLUT_WINDOW_WIDTH)*2)
         {
             (*i)->draw();
             glColor3f(0.3f, 0.1f, 0.0f);
@@ -217,7 +225,6 @@ void Game::draw()
         ++i;
     }
 
-    levelExit->draw();
     player->draw();
 }
 

@@ -18,11 +18,12 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1456273422 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
+1456442530 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
 	"Game.h"
 	"Sprite.h"
 	"Player.h"
 	"Enemy.h"
+	"Boss.h"
 	"Wall.h"
 	"Exit.h"
 	"Health.h"
@@ -32,7 +33,7 @@
 	<math.h>
 	<time.h>
 
-1456185148 c:\users\toman_000\desktop\cave_explorer\game.h
+1456433465 c:\users\toman_000\desktop\cave_explorer\game.h
 	<vector>
 	<list>
 	"Sprite.h"
@@ -45,7 +46,7 @@
 	<GL/glut.h>
 	<stdlib.h>
 
-1456197166 source:c:\users\toman_000\desktop\cave_explorer\sprite.cpp
+1456438932 source:c:\users\toman_000\desktop\cave_explorer\sprite.cpp
 	"Sprite.h"
 	"Game.h"
 	"Exit.h"
@@ -55,7 +56,7 @@
 	<math.h>
 	<iostream>
 
-1456185089 c:\users\toman_000\desktop\cave_explorer\sprite.h
+1456381755 c:\users\toman_000\desktop\cave_explorer\sprite.h
 	"Bullet.h"
 	<iostream>
 
@@ -63,7 +64,7 @@
 	"Sprite.h"
 	"Gun.h"
 
-1456197305 source:c:\users\toman_000\desktop\cave_explorer\player.cpp
+1456436392 source:c:\users\toman_000\desktop\cave_explorer\player.cpp
 	"Player.h"
 	"Game.h"
 	"Wall.h"
@@ -72,7 +73,7 @@
 	<iostream>
 	<sstream>
 
-1456371643 source:c:\users\toman_000\desktop\cave_explorer\enemy.cpp
+1456441166 source:c:\users\toman_000\desktop\cave_explorer\enemy.cpp
 	"Enemy.h"
 	"Game.h"
 	"Wall.h"
@@ -96,7 +97,7 @@
 1456105754 c:\users\toman_000\desktop\cave_explorer\wall.h
 	"Sprite.h"
 
-1456372609 source:c:\users\toman_000\desktop\cave_explorer\gun.cpp
+1456442976 source:c:\users\toman_000\desktop\cave_explorer\gun.cpp
 	"Gun.h"
 	"Game.h"
 	<GL/glut.h>
@@ -134,7 +135,7 @@
 1456183412 c:\users\toman_000\desktop\cave_explorer\health.h
 	"Sprite.h"
 
-1456373546 source:c:\users\toman_000\desktop\cave_explorer\gunitem.cpp
+1456373665 source:c:\users\toman_000\desktop\cave_explorer\gunitem.cpp
 	"GunItem.h"
 	"Game.h"
 	<GL/glut.h>
@@ -142,6 +143,23 @@
 	<sstream>
 
 1456190160 c:\users\toman_000\desktop\cave_explorer\gunitem.h
+	"Sprite.h"
+	"Gun.h"
+
+1456442287 source:c:\users\toman_000\desktop\cave_explorer\boss.cpp
+	"Boss.h"
+	"Game.h"
+	"Wall.h"
+	"Enemy.h"
+	"Gun.h"
+	"GunItem.h"
+	"Health.h"
+	<GL/glut.h>
+	<iostream>
+	<math.h>
+	<algorithm>
+
+1456441937 c:\users\toman_000\desktop\cave_explorer\boss.h
 	"Sprite.h"
 	"Gun.h"
 

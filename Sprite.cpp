@@ -21,6 +21,16 @@ Sprite::Sprite(float x, float y)
     this->angle = 0.0; // Normal
 }
 
+void Sprite::setW(float value)
+{
+    this->w = value;
+}
+
+void Sprite::setH(float value)
+{
+    this->h = value;
+}
+
 void Sprite::setX(float value)
 {
     this->x = value;
@@ -44,6 +54,16 @@ float Sprite::getX()
 float Sprite::getY()
 {
     return this->y;
+}
+
+float Sprite::getW()
+{
+    return this->w;
+}
+
+float Sprite::getH()
+{
+    return this->h;
 }
 
 float Sprite::getAngle()
@@ -70,12 +90,12 @@ void Sprite::draw()
 {
     glPushMatrix();
 
-        glTranslatef(x-(game.scale/2), y-(game.scale/2), 0.0f);
+        glTranslatef(x-(w/2), y-(h/2), 0.0f);
         glRotatef(angle*180/PI, 0.0f, 0.0f, 1.0f);
-        glTranslatef(-x-(game.scale/2), -y-(game.scale/2), 0.0f);
+        glTranslatef(-x-(w/2), -y-(h/2), 0.0f);
 
         glBegin(GL_QUADS);
-        glNormal3f(0.0f, 1.0f, 0.0f);
+        glNormal3f(0.0f, 0.0f, 0.0f);
             glVertex2f(x, y);
             glVertex2f(x+w, y);
             glVertex2f(x+w, y+h);
@@ -89,10 +109,10 @@ bool Sprite::collision(Sprite* obj)
 {
     bool collided = false;
 
-    if (this->x < obj->x + obj->w-1 &&
-		this->x + this->w-1 > obj->x &&
-		this->y < obj->y + obj->h-1 &&
-		this->y + this->h-1 > obj->y)
+    if (this->x-(this->w) < obj->x-(obj->w) + obj->w &&
+        this->x-(this->w) + this->w > obj->x-(obj->w) &&
+        this->y-(this->h) < obj->y-(obj->h) + obj->h &&
+        this->y-(this->h) + this->h > obj->y-(obj->h))
     {
         collided = true;
     }
@@ -132,8 +152,8 @@ bool Sprite::pointWithinSprite(float pointX, float pointY, Sprite* obj)
 
 float Sprite::distance(Sprite* obj)
 {
-    float dx = abs((this->x+this->w/2) - (obj->x+obj->w/2));
-    float dy = abs((this->y+this->h/2) - (obj->y+obj->h/2));
+    float dx = abs((this->x-this->w/2) - (obj->x-obj->w/2));
+    float dy = abs((this->y-this->h/2) - (obj->y-obj->h/2));
 	float hyp = sqrt( (dx*dx)+(dy*dy) );
 
 	return hyp;

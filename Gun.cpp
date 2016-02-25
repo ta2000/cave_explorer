@@ -29,7 +29,7 @@ void Gun::setRandomStats(int modifier)
     fireRate = 50 - (rand()%15 + modifier);
     if (fireRate < 10)
         fireRate = 10;
-    damage = rand()%3 + modifier;
+    damage = rand()%3 + modifier/4;
     if (damage > 15)
         damage = 15;
     velocity = rand()%5 + modifier;
