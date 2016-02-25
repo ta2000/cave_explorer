@@ -135,7 +135,7 @@ void Game::createMap(int numRooms)
     {
         for (unsigned int j=0; j<sizeof(gameMap[0]); j++)
         {
-            std::cout << (gameMap[i][j]) << " ";
+            //std::cout << (gameMap[i][j]) << " ";
             if (gameMap[i][j] == 'x')
             {
                 addWall(j*scale, i*scale);

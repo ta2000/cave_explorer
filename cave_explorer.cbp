@@ -56,6 +56,8 @@
 		<Unit filename="Game.h" />
 		<Unit filename="Gun.cpp" />
 		<Unit filename="Gun.h" />
+		<Unit filename="GunItem.cpp" />
+		<Unit filename="GunItem.h" />
 		<Unit filename="Health.cpp" />
 		<Unit filename="Health.h" />
 		<Unit filename="Player.cpp" />

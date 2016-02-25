@@ -22,6 +22,11 @@ void Health::draw()
 bool Health::update()
 {
     bool unused = true;
+    // Flag for deletion and free memory if player moves to next level
+    if (game.player->collision(game.levelExit))
+    {
+        unused = false;
+    }
     if (collision(game.player))
     {
         unused = false;
