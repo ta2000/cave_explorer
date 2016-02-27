@@ -74,7 +74,7 @@ bool Boss::update()
     {
     case 0: // Chasing player
          // Face towards player
-        setAngle(atan2(getY() - game.player->y, getX() - game.player->x));
+        setAngle(atan2(getY() - game.player->getY(), getX() - game.player->getX()));
         setX(getX() + cos( getAngle()+PI )*this->speed);
         setY(getY() + sin( getAngle()+PI )*this->speed);
         break;
@@ -106,7 +106,7 @@ bool Boss::update()
         }
         break;
     case 2:
-        setAngle(atan2(getY() - game.player->y, getX() - game.player->x));
+        setAngle(atan2(getY() - game.player->getY(), getX() - game.player->getX()));
         if (rand() % 40 == 0)
         {
             game.sprites.push_front(new Enemy(getX(), getY()));
@@ -118,7 +118,7 @@ bool Boss::update()
     if (collision(game.player))
     {
         --game.player->hp;
-        if ( game.player->y > getY() ) {
+        if ( game.player->getY() > getY() ) {
             for (auto &i : game.sprites) {
                 i->setY(i->y-(this->speed*2));
             }
@@ -126,7 +126,7 @@ bool Boss::update()
                 i->y-=this->speed*2;
             }
         };
-        if ( game.player->x > getX() ) {
+        if ( game.player->getX() > getX() ) {
             for (auto &i : game.sprites) {
                 i->setX(i->x-(this->speed*2));
             }
@@ -134,7 +134,7 @@ bool Boss::update()
                 i->x-=this->speed*2;
             }
         };
-        if ( game.player->y < getY() ) {
+        if ( game.player->getY() < getY() ) {
             for (auto &i : game.sprites) {
                 i->setY(i->y+(this->speed*2));
             }
@@ -142,7 +142,7 @@ bool Boss::update()
                 i->y+=this->speed*2;
             }
         };
-        if ( game.player->x < getX() ) {
+        if ( game.player->getX() < getX() ) {
             for (auto &i : game.sprites) {
                 i->setX(i->x+(this->speed*2));
             }

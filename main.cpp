@@ -9,6 +9,7 @@ void handleKeyPress(unsigned char key, int x, int y);
 void handleKeyRelease(unsigned char key, int x, int y);
 void handleMouseDown(int button, int state, int x, int y);
 void handleMouseMove(int x, int y);
+void reshape(int new_width, int new_height);
 
 extern Game game;
 
@@ -34,6 +35,10 @@ int main(int argc, char *argv[])
     glutKeyboardUpFunc(handleKeyRelease);
     glutMouseFunc(handleMouseDown);
     glutPassiveMotionFunc(handleMouseMove);
+    glutReshapeFunc(reshape);
+
+    game.screenWidth = glutGet(GLUT_WINDOW_WIDTH);
+    game.screenHeight = glutGet(GLUT_WINDOW_HEIGHT);
 
     glutTimerFunc(25, update, 0);
 
@@ -80,4 +85,9 @@ void handleMouseDown(int button, int state, int x, int y)
 void handleMouseMove(int x, int y)
 {
     game.mouseMove(x, y);
+}
+
+void reshape(int new_width, int new_height)
+{
+    game.reshape(new_width, new_height);
 }

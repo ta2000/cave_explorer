@@ -50,8 +50,8 @@ bool Enemy::update()
     // ================
     if ( distance(game.player) < 400 )
     {
-        targetX = game.player->x;
-        targetY = game.player->y;
+        targetX = game.player->getX();
+        targetY = game.player->getY();
         // Decrement counter each frame
         attackMovementCounter--;
         // Prevent counter from being below 0

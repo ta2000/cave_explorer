@@ -297,5 +297,28 @@ void Game::mouseDown(int button, int state, int x, int y)
 
 void Game::mouseMove(int x, int y)
 {
-    player->setAngle(atan2(y - player->y, x - player->x));
+    player->setAngle(atan2(y - player->getY(), x - player->getX()));
+}
+
+void Game::reshape(int new_width, int new_height)
+{
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, new_width, new_height, 0, 0, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glViewport(0,0,new_width,new_height);
+
+    for (auto &i : sprites)
+    {
+        i->x -= (screenWidth - new_width)/2;
+        i->y -= (screenHeight - new_height)/2;
+    }
+    player->setX(player->getX() - (screenWidth - new_width)/2);
+    player->setY(player->getY() - (screenHeight - new_height)/2);
+    levelExit->setX(levelExit->getX() - (screenWidth - new_width)/2);
+    levelExit->setY(levelExit->getY() - (screenHeight - new_height)/2);
+
+    screenWidth = new_width;
+    screenHeight = new_height;
 }

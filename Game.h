@@ -13,6 +13,12 @@ public:
     Game();
     ~Game(){};
 
+    int screenWidth = 0;
+    int screenHeight = 0;
+    void reshape(int new_width, int new_height);
+    int mouseX = 0;
+    int mouseY = 0;
+
     int levelNum = 1;
     int scale = 32;
     Player* player;
