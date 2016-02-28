@@ -20,7 +20,7 @@ public:
     int mouseY = 0;
 
     int levelNum = 1;
-    int scale = 64;
+    int scale = 32;
     Player* player;
     Exit* levelExit;
     std::list<Sprite*> sprites;

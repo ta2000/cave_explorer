@@ -184,7 +184,7 @@ void Game::update()
         if ((*i)->update() == false)
         {
             delete(*i);
-            sprites.erase(i);
+            sprites.erase(i++);
         }
         ++i;
     }
@@ -192,14 +192,13 @@ void Game::update()
     // Update all bullets
     for (auto i = bullets.begin(); i != bullets.end();)
     {
-        (*i)->update();
         // Delete if off screen
-        if ( (*i)->x < 0 || (*i)->x > glutGet(GLUT_WINDOW_WIDTH) || (*i)->y < 0 || (*i)->y > glutGet(GLUT_WINDOW_HEIGHT))
+        if ( (*i)->update() == false)
         {
             // Delete the bullet pointed to
             delete (*i);
             // Remove the pointer from the list
-            bullets.erase(i);
+            bullets.erase(i++);
         }
         ++i;
     }
@@ -212,8 +211,6 @@ void Game::draw()
     {
         i->draw();
     }
-
-    levelExit->draw();
 
     for (auto i = sprites.begin(); i != sprites.end();)
     {

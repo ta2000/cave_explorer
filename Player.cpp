@@ -184,8 +184,8 @@ bool Player::update()
     // Check if dead or not
     if (hp <= 0)
     {
-        game.levelExit->setX(x);
-        game.levelExit->setY(y);
+        game.levelExit->setX(getX());
+        game.levelExit->setY(getY());
         hp = maxHp;
         game.levelNum = 0;
     }

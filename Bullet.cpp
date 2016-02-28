@@ -24,10 +24,19 @@ Bullet::Bullet(float x, float y, float angle, float damage, float velocity, floa
     this->isEnemy = isEnemy;
 }
 
-void Bullet::update()
+bool Bullet::update()
 {
     x += (cos( angle )*velocity)+velX;
     y += (sin( angle )*velocity)+velY;
+
+    if ((x < 0 || x > glutGet(GLUT_WINDOW_WIDTH) || y < 0 || y > glutGet(GLUT_WINDOW_HEIGHT)))
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
 
 void Bullet::draw()
