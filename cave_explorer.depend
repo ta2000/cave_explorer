@@ -73,7 +73,7 @@
 	<iostream>
 	<sstream>
 
-1456443076 source:c:\users\toman_000\desktop\cave_explorer\enemy.cpp
+1456604878 source:c:\users\toman_000\desktop\cave_explorer\enemy.cpp
 	"Enemy.h"
 	"Game.h"
 	"Wall.h"
@@ -146,7 +146,7 @@
 	"Sprite.h"
 	"Gun.h"
 
-1456465210 source:c:\users\toman_000\desktop\cave_explorer\boss.cpp
+1456604832 source:c:\users\toman_000\desktop\cave_explorer\boss.cpp
 	"Boss.h"
 	"Game.h"
 	"Wall.h"

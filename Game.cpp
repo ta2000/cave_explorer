@@ -158,8 +158,8 @@ void Game::createMap(int numRooms)
             else if (gameMap[i][j] == 'p')
             {
                 // Set the view on the player
-                difX = j*scale - player->x;
-                difY = i*scale - player->y;
+                difX = j*scale - player->getX();
+                difY = i*scale - player->getY();
             }
 
         }
@@ -316,8 +316,6 @@ void Game::reshape(int new_width, int new_height)
     }
     player->setX(player->getX() - (screenWidth - new_width)/2);
     player->setY(player->getY() - (screenHeight - new_height)/2);
-    levelExit->setX(levelExit->getX() - (screenWidth - new_width)/2);
-    levelExit->setY(levelExit->getY() - (screenHeight - new_height)/2);
 
     screenWidth = new_width;
     screenHeight = new_height;
