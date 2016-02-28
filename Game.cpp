@@ -192,12 +192,9 @@ void Game::update()
     // Update all bullets
     for (auto i = bullets.begin(); i != bullets.end();)
     {
-        // Delete if off screen
         if ( (*i)->update() == false)
         {
-            // Delete the bullet pointed to
             delete (*i);
-            // Remove the pointer from the list
             bullets.erase(i++);
         }
         ++i;

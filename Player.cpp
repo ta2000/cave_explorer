@@ -181,13 +181,12 @@ bool Player::update()
         ++i;
     }
 
-    // Check if dead or not
+    // Check if dead or not, if dead, reset level counter and level
     if (hp <= 0)
     {
-        game.levelExit->setX(getX());
-        game.levelExit->setY(getY());
-        hp = maxHp;
         game.levelNum = 0;
+        game.levelExit->changeLevel();
+        hp = maxHp;
     }
 
     return true;

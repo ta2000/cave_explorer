@@ -22,26 +22,31 @@ bool Exit::update()
 {
     if (collision(game.player))
     {
-        game.levelNum++;
-        // Delete all objects in sprites vector
-        for (auto &i : game.sprites)
-        {
-            // If object's class is not an Exit, delete
-            if (dynamic_cast<Exit*>(this) == NULL)
-                delete i;
-        }
-        // Clear sprites
-        game.sprites.clear(); // We still have a pointer to the level exit stored in game
-
-        // Delete all bullets on screen
-        for (auto &i : game.bullets)
-        {
-            delete i;
-        }
-        game.bullets.clear();
-
-        // Create a new map
-        game.createMap(10);
+        changeLevel();
     }
     return true;
+}
+
+void Exit::changeLevel()
+{
+    game.levelNum++;
+    // Delete all objects in sprites vector
+    for (auto &i : game.sprites)
+    {
+        // If object's class is not an Exit, delete
+        if (dynamic_cast<Exit*>(this) == NULL)
+            delete i;
+    }
+    // Clear sprites
+    game.sprites.clear(); // We still have a pointer to the level exit stored in game
+
+    // Delete all bullets on screen
+    for (auto &i : game.bullets)
+    {
+        delete i;
+    }
+    game.bullets.clear();
+
+    // Create a new map
+    game.createMap(10);
 }

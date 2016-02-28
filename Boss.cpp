@@ -23,7 +23,7 @@ Boss::Boss(float x, float y) : Sprite(x, y)
     this->setW(128);
     this->setH(128);
 
-    this->hp = game.levelNum*3;
+    this->hp = game.levelNum*5;
 
     this->gun = new Gun(2, game.levelNum/5, -6, true);
     this->speed = game.player->speed-2;

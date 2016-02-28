@@ -12,6 +12,7 @@ public:
 
     void draw();
     bool update();
+    void changeLevel();
 private:
 };
 
