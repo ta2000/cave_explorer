@@ -18,7 +18,7 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1456604767 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
+1456678344 source:c:\users\toman_000\desktop\cave_explorer\game.cpp
 	"Game.h"
 	"Sprite.h"
 	"Player.h"
@@ -33,7 +33,7 @@
 	<math.h>
 	<time.h>
 
-1456604323 c:\users\toman_000\desktop\cave_explorer\game.h
+1456678201 c:\users\toman_000\desktop\cave_explorer\game.h
 	<vector>
 	<list>
 	"Sprite.h"

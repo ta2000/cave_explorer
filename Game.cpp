@@ -297,7 +297,7 @@ void Game::mouseDown(int button, int state, int x, int y)
 
 void Game::mouseMove(int x, int y)
 {
-    player->setAngle(atan2(y - player->getY(), x - player->getX()));
+    player->setAngle(atan2(y - (player->getY() - player->getW()/2), x - (player->getX() - player->getH()/2)));
 }
 
 void Game::reshape(int new_width, int new_height)
